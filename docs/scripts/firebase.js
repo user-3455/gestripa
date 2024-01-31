@@ -24,6 +24,11 @@ const firebaseConfig = {
   
       var uid = user.uid;
       document.cookie = "uid=" + uid + ";";
+
+      getAllRepairs();
+      getInternalRepairs();
+      getEsternalRepairs();
+      getWarrantyRepairs();
   
     } else {
       document.getElementById("login").style.display = "flex";

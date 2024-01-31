@@ -1012,7 +1012,3 @@ function getWarrantyRepairsDesc(){
 
   
 
-  getAllRepairs();
-  getInternalRepairs();
-  getEsternalRepairs();
-  getWarrantyRepairs();
