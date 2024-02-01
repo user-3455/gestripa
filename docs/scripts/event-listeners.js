@@ -45,4 +45,28 @@ document.getElementById("repair_search1").addEventListener("keyup", function(eve
         getALLRepairsByBrandName4();
     }
   });
+
+  document.getElementById("repair_search20").addEventListener("keyup", function(event) {
+    if (event.key === 'Enter') {
+        getALLRepairsBySerialNumber();
+    }
+  });
+  
+  document.getElementById("repair_search21").addEventListener("keyup", function(event) {
+    if (event.key === 'Enter') {
+        getALLRepairsBySerialNumber2();
+    }
+  });
+  
+  document.getElementById("repair_search22").addEventListener("keyup", function(event) {
+    if (event.key === 'Enter') {
+        getALLRepairsBySerialNumber3();
+    }
+  });
+
+  document.getElementById("repair_search23").addEventListener("keyup", function(event) {
+    if (event.key === 'Enter') {
+        getALLRepairsBySerialNumber4();
+    }
+  });
   

@@ -270,6 +270,11 @@ html, body{
         height: calc(95% - 4rem);
         width: 95%;
     }
+
+    #riparazioni_esterne{
+        height: calc(95% - 4rem);
+        width: 95%;
+    }
     
     #tutte_le_riparazioni{
         height: calc(95% - 4rem);
