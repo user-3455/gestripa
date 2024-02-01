@@ -727,7 +727,7 @@ function getEsternalRepairsDesc(){
           });
       })
       .catch((error) => {
-          alert('Errore durante il recupero delle riparazioni interne: ' + error); // Aggiunto il messaggio di errore
+        alert('Errore durante il recupero delle riparazioni interne: ' + error); // Aggiunto il messaggio di errore
       });
 
     function createTableRow(data, taskName) {
@@ -741,6 +741,7 @@ function getEsternalRepairsDesc(){
       var cell5 = row.insertCell(5);
       var cell6 = row.insertCell(6);
       var cell7 = row.insertCell(7);
+      var cell8 = row.insertCell(8);
   
       cell2.className = 'data-cell';
     
