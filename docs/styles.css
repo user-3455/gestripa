@@ -1,0 +1,356 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(222, 221, 221);
+}
+
+#master_container{
+    display: flex;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+#left_bar{
+    width: 13rem;
+    height: 95%;
+    background: rgba(255, 255, 255, 0.664);
+    border-radius: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.046);
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1.5rem;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#under_bar{
+    display: none;
+}
+
+.card1{
+    background: rgba(255, 255, 255, 0.664);
+    border-radius: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.046);
+}
+
+.button1{
+    background: rgb(255, 255, 255);
+    width: 80%;
+    height: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.228);
+    border-radius: 2rem;
+    color: black;
+    cursor: pointer;
+    font-family: 'Lato';
+}
+
+.button1:hover{
+    font-weight: bold;
+    border: 1px solid rgba(0, 0, 0, 0.527);
+}
+
+.general_paragraph1{
+    color: black;
+    font-family: 'Lato';
+}
+
+.input1{
+    border-radius: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.299);
+    height: 1.5rem;
+    resize: vertical;
+}
+
+#riparazioni_in_garanzia{
+    width: calc(100% - 18rem); 
+    height: 95%;
+    display: none;
+    padding-bottom: 1.5rem;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    align-items: center;
+}
+
+#riparazioni_interne{
+    width: calc(100% - 18rem); 
+    height: 95%;
+    display: none;
+    flex-direction: column;
+    padding-bottom: 1.5rem;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    align-items: center;
+}
+
+#riparazioni_esterne{
+    width: calc(100% - 18rem); 
+    height: 95%;
+    display: none;
+    padding-bottom: 1.5rem;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    align-items: center;
+}
+
+#tutte_le_riparazioni{
+    width: calc(100% - 18rem); 
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1.5rem;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    align-items: center;
+}
+
+#change_repairs{
+    width: calc(100% - 18rem); 
+    height: 95%;
+    display: none;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    align-items: center;
+}
+
+
+#create_new{
+    width: calc(100% - 18rem); 
+    height: 95%;
+    display: none;
+    flex-direction: column;
+    overflow-x: auto;
+    overflow-y: auto;
+    align-items: center;
+}
+
+#scheda_di_lavorazione{
+    width: calc(100% - 18rem); 
+    height: 95%;
+    display: none;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    align-items: center;
+}
+
+#change_repairs{
+    width: calc(100% - 18rem); 
+    height: 95%;
+    display: none;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    align-items: center;
+}
+
+#login{
+    display: none;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.208);
+}
+
+
+.table_container1{
+    border: 1px solid rgba(0, 0, 0, 0.128);
+    border-radius: 10px; 
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    }
+    
+    .table1 {
+    border-collapse: collapse;
+    border-radius: 10px;
+    font-family: 'Lato';
+    }
+    
+    .table1 th, .table1 td {
+    text-align: left;
+    border: 1px solid rgba(0, 0, 0, 0.221);
+    padding: 8px;
+    color: black;
+    }
+
+    .description_table_section{
+        max-width: 10rem;
+        overflow-x: auto;
+    }
+
+    #notification1{
+        display: none;
+        pointer-events: none;
+        position: fixed;
+        z-index: 999999999999;
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+        justify-content: start;
+        align-items: end;
+        overflow-y: auto;
+    }
+
+    .crd1010{
+        background-color: rgb(247, 247, 247);
+        padding: 1rem;
+        font-family: 'Lato';
+    }
+
+
+    
+    .task_actions_button1{
+        color: rgb(40, 39, 39);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: 1px solid rgba(0, 0, 0, 0.107);
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        margin-left: 0.2rem;
+        margin-right: 0.2rem;
+        cursor: pointer;
+    }
+    
+    .task_actions_button1:hover{
+        background-color: rgba(0, 0, 0, 0.208);
+    }
+
+
+    
+.description_table_section{
+    max-width: 10rem;
+    overflow-x: auto;
+}
+
+
+
+@media screen and (max-width: 1000px) {
+
+    .resp_div40{
+        flex-direction: column !important;
+    }
+
+    .card1{
+        border-radius: 1rem;
+    }
+
+    .resp_div1{
+        flex-direction: column !important;
+    }
+    
+    .resp_div2{
+        width: 95% !important;
+    }
+
+    #left_bar{
+        display: none;
+    }
+
+    #master_container{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #under_bar{
+        display: flex;
+        width: 95%;
+        height: 4rem;
+        margin-top: 1rem;
+        border-radius: 2rem;
+        background: rgba(255, 255, 255, 0.664);
+        border: 1px solid rgba(0, 0, 0, 0.046);
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    #riparazioni_in_garanzia{
+        height: calc(95% - 4rem);
+        width: 95%;
+    }
+
+    #scheda_di_lavorazione{
+        height: calc(95% - 4rem);
+        width: 95%;
+    }
+    
+    
+    #riparazioni_interne{
+        height: calc(95% - 4rem);
+        width: 95%;
+    }
+
+    #riparazioni_esterne{
+        height: calc(95% - 4rem);
+        width: 95%;
+    }
+    
+    #tutte_le_riparazioni{
+        height: calc(95% - 4rem);
+        width: 95%;
+    }
+    
+    #change_repairs{
+        height: calc(95% - 4rem);
+        width: 95%;
+    }
+    
+    #create_new{
+        height: calc(95% - 4rem);
+        width: 95%;
+    }
+
+    #change_repairs{
+        height: calc(95% - 4rem);
+        width: 95%;
+    }
+
+    .under_bar_button1{
+        color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: 1px solid transparent;
+        height: 90%;
+    }
+}
+
+
+@media screen and (min-width: 1001px) {
+    ::-webkit-scrollbar{
+        border-radius: 1rem;
+        width: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb{
+        border-radius: 1rem;
+        background-color: rgb(155, 155, 155);
+    }
+    
+    ::-webkit-scrollbar-thumb:hover{
+        border-radius: 1rem;
+        background-color: rgb(68, 68, 68);
+    }
+    
+    
+}
+
