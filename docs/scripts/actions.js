@@ -31,6 +31,7 @@ function aggiungiRiparazione() {
         reported_defect: document.getElementById('reported_defect1').value,
         customer_name: document.getElementById('customer_name1').value,
         customer_phone: document.getElementById('customer_phone1').value,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
       };
 
       path.set(data)
@@ -64,23 +65,28 @@ function aggiungiRiparazione() {
 
 
 function deleteRepair(data) {
-  const db = firebase.firestore();
-  const docRef = db.collection('repairs').doc(data.id);
-  
-  docRef.delete()
-    .then(() => {
-      notificate('Riparazione eliminata con successo', 'normal');
-      getAllRepairs();
-      getInternalRepairs();
-      getWarrantyRepairs();
-    })
-    .catch((error) => {
-      notificate("Errore durante l'eliminazione della riparazione:" + error, 'error');
-    });
+  var conferma = confirm("Sei sicuro di voler eliminare la riparazione?");
+  if (conferma) {
+    const db = firebase.firestore();
+    const docRef = db.collection('repairs').doc(data.id);
+    
+    docRef.delete()
+      .then(() => {
+        notificate('Riparazione eliminata con successo', 'normal');
+        getAllRepairs();
+        getInternalRepairs();
+        getWarrantyRepairs();
+      })
+      .catch((error) => {
+        notificate("Errore durante l'eliminazione della riparazione:" + error, 'error');
+      });
+  }
   }
 
   function deleteRepairProduct(data) {
-    const db = firebase.firestore();
+    var conferma = confirm("Sei sicuro di voler eliminare questo elemento?");
+    if (conferma) {
+      const db = firebase.firestore();
     const docRef = db.collection('repairs').doc(globalThis.currentRepair.id).collection('products').doc(data.id);
     
     docRef.delete()
@@ -92,9 +98,8 @@ function deleteRepair(data) {
         notificate("Errore durante l'eliminazione del prodotto:" + error, 'error');
       });
     }
+    }
   
-
-
 
   function getRepairDataToFill(data) { 
     globalThis.currentRepair = data;

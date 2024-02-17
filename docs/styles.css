@@ -242,6 +242,10 @@ html, body{
 
 @media screen and (max-width: 1000px) {
 
+    .resp_div40{
+        flex-direction: column !important;
+    }
+
     .card1{
         border-radius: 1rem;
     }

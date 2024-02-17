@@ -19,8 +19,7 @@ function getAllRepairs(){
       }
    
   
-  function createTableRow(data, taskName) {
-  
+  function createTableRow(data) {
     var row = table.insertRow();
     var cell15 = row.insertCell(0);
     var cell1 = row.insertCell(1);
