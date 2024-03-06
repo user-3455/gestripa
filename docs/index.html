@@ -68,6 +68,7 @@
                     <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Stato riparazione</p>
                     <select class="input1" type="date" id="status2">
                         <option value="IN ENTRATA">IN ENTRATA</option>
+                        <option value="RITIRATO">RITIRATO</option>
                         <option value="PREVENTIVO">PREVENTIVO</option>
                         <option value="ATTESA RICAMBI">ATTESA RICAMBI</option>
                         <option value="IN LAVORAZIONE">IN LAVORAZIONE</option>
@@ -145,6 +146,7 @@
                     <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Stato riparazione</p>
                     <select class="input1" type="date" id="status1">
                         <option value="IN ENTRATA">IN ENTRATA</option>
+                        <option value="RITIRATO">RITIRATO</option>
                         <option value="PREVENTIVO">PREVENTIVO</option>
                         <option value="ATTESA RICAMBI">ATTESA RICAMBI</option>
                         <option value="IN LAVORAZIONE">IN LAVORAZIONE</option>
@@ -211,17 +213,15 @@
             </div>
             <div style="width: 95%; background: rgba(0, 0, 0, 0.263); height: 1px; margin-top: 1rem; margin-bottom: 1rem;"><p> </p></div>
             <div class="resp_div40" style="width: 95%; display: flex; flex-direction: row; align-items: start; justify-content: center;">
-                <div style="width: 95%; display: flex; flex-direction: column; align-items: start; justify-content: center; margin-bottom: 1rem;">
-                    <h5 style="width: 95%; margin-bottom: 0rem; margin-top: 0rem;" class="general_paragraph1">Ordina per data di ingresso:</h5>
-                    <button class="button1" onclick="getAllRepairsAsc();" style="width: 8rem;">Più lontana</button>
-                    <button class="button1" onclick="getAllRepairsDesc();" style="width: 8rem;">Più recente</button>
-                </div>
-                <div style="width: 95%; display: flex; flex-direction: column; align-items: start; justify-content: center; margin-bottom: 1rem;">
-                <h5 style="width: 95%; margin-bottom: 0rem; margin-top: 0rem;" class="general_paragraph1">Ordina per data di aggiunta:</h5>
-                <select class="input1" id="orderSelect" onchange="changeOrder()">
-                    <option value="asc">Più vecchi prima</option>
-                    <option value="desc">Più recenti prima</option>
-                </select>
+                <div style="width: 95%; display: flex; flex-direction: row; align-items: start; justify-content: center; margin-bottom: 1rem;">
+                    <div style="display: flex; flex-direction: column;">
+                        <h5 style="width: 95%; margin-bottom: 0rem; margin-top: 0rem;" class="general_paragraph1">Ordina per data di aggiunta:</h5>
+                        <select class="input1" id="orderSelect" onchange="changeOrder()">
+                            <option value="asc">Più vecchi prima</option>
+                            <option value="desc">Più recenti prima</option>
+                        </select>
+                    </div>
+                    <button onclick="changeOrder();" class="button1" style="width: 3rem; height: 3rem;"><i class="material-icons notranslate">search</i></button>
                 </div>
                 <div style="width: 95%; display: flex; flex-direction: column; align-items: start; justify-content: center; margin-bottom: 1rem;">
                     <h5 style="width: 95%; margin-bottom: 0rem; margin-top: 0rem;" class="general_paragraph1">Mostra per prime le ripazioni in stato di:</h5>
@@ -276,17 +276,15 @@
             </div>
             <div style="width: 95%; background: rgba(0, 0, 0, 0.263); height: 1px; margin-top: 1rem; margin-bottom: 1rem;"><p> </p></div>
         <div class="resp_div40" style="width: 95%; display: flex; flex-direction: row; align-items: center; justify-content: center;">
-            <div style="width: 95%; display: flex; flex-direction: column; align-items: start; justify-content: center; margin-bottom: 1rem;">
-                <h5 style="width: 95%; margin-bottom: 0rem; margin-top: 0rem;" class="general_paragraph1">Ordina per data di ingresso:</h5>
-                <button class="button1" onclick="getInternalRepairsAsc();" style="width: 8rem;">Più lontana</button>
-                <button class="button1" onclick="getInternalRepairsDesc();" style="width: 8rem;">Più recente</button>
-            </div>
-            <div style="width: 95%; display: flex; flex-direction: column; align-items: start; justify-content: center; margin-bottom: 1rem;">
-                <h5 style="width: 95%; margin-bottom: 0rem; margin-top: 0rem;" class="general_paragraph1">Ordina per data di aggiunta:</h5>
-                <select class="input1" id="orderSelect3" onchange="changeOrder3()">
-                    <option value="asc">Più vecchi prima</option>
-                    <option value="desc">Più recenti prima</option>
-                </select>
+            <div style="width: 95%; display: flex; flex-direction: row; align-items: start; justify-content: center; margin-bottom: 1rem;">
+                <div style="display: flex; flex-direction: column;">
+                    <h5 style="width: 95%; margin-bottom: 0rem; margin-top: 0rem;" class="general_paragraph1">Ordina per data di aggiunta:</h5>
+                    <select class="input1" id="orderSelect3" onchange="changeOrder3()">
+                        <option value="asc">Più vecchi prima</option>
+                        <option value="desc">Più recenti prima</option>
+                    </select>
+                </div>
+                <button onclick="changeOrder3();" class="button1" style="width: 3rem; height: 3rem;"><i class="material-icons notranslate">search</i></button>
                 </div>
             <div style="width: 95%; display: flex; flex-direction: column; align-items: start; justify-content: center; margin-bottom: 1rem;">
                 <h5 style="width: 95%; margin-bottom: 0rem; margin-top: 0rem;" class="general_paragraph1">Mostra per prime le ripazioni in stato di:</h5>
@@ -342,16 +340,16 @@
             <div style="width: 95%; background: rgba(0, 0, 0, 0.263); height: 1px; margin-top: 1rem; margin-bottom: 1rem;"><p> </p></div>
         <div class="resp_div40" style="width: 95%; display: flex; flex-direction: row; align-items: center; justify-content: center;">
             <div style="width: 95%; display: flex; flex-direction: column; align-items: start; justify-content: center; margin-bottom: 1rem;">
-                <h5 style="width: 95%; margin-bottom: 0rem; margin-top: 0rem;" class="general_paragraph1">Ordina per data di ingresso:</h5>
-                <button class="button1" onclick="getEsternalRepairsAsc();" style="width: 8rem;">Più lontana</button>
-                <button class="button1" onclick="getEsternalRepairsDesc();" style="width: 8rem;">Più recente</button>
-            </div>
-            <div style="width: 95%; display: flex; flex-direction: column; align-items: start; justify-content: center; margin-bottom: 1rem;">
-                <h5 style="width: 95%; margin-bottom: 0rem; margin-top: 0rem;" class="general_paragraph1">Ordina per data di aggiunta:</h5>
-                <select class="input1" id="orderSelect4" onchange="changeOrder4()">
-                    <option value="asc">Più vecchi prima</option>
-                    <option value="desc">Più recenti prima</option>
-                </select>
+                <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+                    <div style="display: flex; flex-direction: column;">
+                        <h5 style="width: 95%; margin-bottom: 0rem; margin-top: 0rem;" class="general_paragraph1">Ordina per data di aggiunta:</h5>
+                        <select class="input1" id="orderSelect4" onchange="changeOrder4()">
+                            <option value="asc">Più vecchi prima</option>
+                            <option value="desc">Più recenti prima</option>
+                        </select>
+                    </div>
+                <button onclick="changeOrder4()" class="button1" style="width: 3rem; height: 3rem;"><i class="material-icons notranslate">search</i></button>
+                </div>
                 </div>
             <div style="width: 95%; display: flex; flex-direction: column; align-items: start; justify-content: center; margin-bottom: 1rem;">
                 <h5 style="width: 95%; margin-bottom: 0rem; margin-top: 0rem;" class="general_paragraph1">Mostra per prime le ripazioni in stato di:</h5>
@@ -406,17 +404,15 @@
             </div>
             <div style="width: 95%; background: rgba(0, 0, 0, 0.263); height: 1px; margin-top: 1rem; margin-bottom: 1rem;"><p> </p></div>
         <div class="resp_div40" style="width: 95%; display: flex; flex-direction: row; align-items: center; justify-content: center;">
-            <div style="width: 95%; display: flex; flex-direction: column; align-items: start; justify-content: center; margin-bottom: 1rem;">
-                <h5 style="width: 95%; margin-bottom: 0rem; margin-top: 0rem;" class="general_paragraph1">Ordina per data di ingresso:</h5>
-                <button class="button1" onclick="getWarrantyRepairsAsc();" style="width: 8rem;">Più lontana</button>
-                <button class="button1" onclick="getWarrantyRepairsDesc();" style="width: 8rem;">Più recente</button>
-            </div>
-            <div style="width: 95%; display: flex; flex-direction: column; align-items: start; justify-content: center; margin-bottom: 1rem;">
-                <h5 style="width: 95%; margin-bottom: 0rem; margin-top: 0rem;" class="general_paragraph1">Ordina per data di aggiunta:</h5>
-                <select class="input1" id="orderSelect5" onchange="changeOrder5()">
-                    <option value="asc">Più vecchi prima</option>
-                    <option value="desc">Più recenti prima</option>
-                </select>
+            <div style="width: 95%; display: flex; flex-direction: row; align-items: start; justify-content: center; margin-bottom: 1rem;">
+                <div style="display: flex; flex-direction: column;">
+                    <h5 style="width: 95%; margin-bottom: 0rem; margin-top: 0rem;" class="general_paragraph1">Ordina per data di aggiunta:</h5>
+                    <select class="input1" id="orderSelect5" onchange="changeOrder5()">
+                        <option value="asc">Più vecchi prima</option>
+                        <option value="desc">Più recenti prima</option>
+                    </select>
+                </div>
+                <button onclick="changeOrder5();" class="button1" style="width: 3rem; height: 3rem;"><i class="material-icons notranslate">search</i></button>
                 </div>
             <div style="width: 95%; display: flex; flex-direction: column; align-items: start; justify-content: center; margin-bottom: 1rem;">
                 <h5 style="width: 95%; margin-bottom: 0rem; margin-top: 0rem;" class="general_paragraph1">Mostra per prime le ripazioni in stato di:</h5>

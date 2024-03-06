@@ -72,7 +72,7 @@ function showSchedaDiRiparazione(data){
   document.getElementById('customer_phone_pdf1').innerText = 'NUMERO CLIENTE: ' + data.customer_phone;
   document.getElementById('start_pdf1').innerText = 'DATA ENTRATA: ' + data.start;
   document.getElementById('end_pdf1').innerText = 'DATA USCITA: ' + data.end;
-  document.getElementById('brand_model_pdf1').innerText = 'MARCHIO/MODELLO: ' + data.brand;
+  document.getElementById('brand_model_pdf1').innerText = 'MARCHIO/MODELLO: ' + data.brand + '/' + data.model;
   document.getElementById('fault_pdf1').innerText = 'ANOMALIA: ' + data.reported_defect;
 
   document.getElementById('create_new').style.display = 'none';
