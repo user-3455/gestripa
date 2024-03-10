@@ -63,6 +63,26 @@ function aggiungiRiparazione() {
 }
 
 
+function saveElementChanges1(){
+  var docRef = db.collection("repairs").doc(globalThis.currentRepair.id).collection('products').doc(globalThis.currentRepairElement.id);
+
+docRef.update({
+  quantity : document.getElementById('change-input1').value,
+  product : document.getElementById('change-input2').value,
+  product_description : document.getElementById('change-input3').value,
+  product_price : document.getElementById('change-input4').value,
+})
+.then(function() {
+  getRepairProducts();
+  document.getElementById('change-element1').style.display = 'none';
+  alert("Elemento aggiornato con successo!");
+})
+.catch(function(error) {
+  console.error("Errore nell'aggiornamento dell'elemento: ", error);
+});
+}
+
+
 
 function deleteRepair(data) {
   var conferma = confirm("Sei sicuro di voler eliminare la riparazione?");

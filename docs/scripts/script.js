@@ -84,6 +84,20 @@ function showSchedaDiRiparazione(data){
   animate1('scheda_di_lavorazione');
 }
 
+function fillElementEditInterface(data){
+  globalThis.currentRepairElement = data;
+  document.getElementById('change-element1').style.display = 'flex';
+  var quantity = document.getElementById('change-input1');
+  var article = document.getElementById('change-input2');
+  var description = document.getElementById('change-input3');
+  var price = document.getElementById('change-input4');
+
+  quantity.value = data.quantity;
+  article.value = data.product;
+  description.value = data.product_description;
+  price.value = data.product_price;
+}
+
 function notificate(message, type){
     if (type === 'error'){
       document.getElementById('notification_icon1').style.color = 'red';

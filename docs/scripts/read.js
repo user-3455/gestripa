@@ -29,7 +29,6 @@ function getAllRepairs(){
     var cell5 = row.insertCell(5);
     var cell6 = row.insertCell(6);
     var cell7 = row.insertCell(7);
-    var cell8 = row.insertCell(8);
 
     cell2.className = 'data-cell';
   
@@ -39,8 +38,7 @@ function getAllRepairs(){
     cell4.innerHTML = data.type;
     cell5.innerHTML = data.brand;
     cell6.innerHTML = data.model;
-    cell7.innerHTML = data.stato_veicolo;
-    cell8.innerHTML = data.serial_number;
+    cell7.innerHTML = data.serial_number;
 
     cell15.style.display = 'flex'
     cell15.style.flexdirection = 'column';
@@ -111,8 +109,7 @@ function getAllRepairs(){
         cell4.innerHTML = data.type;
         cell5.innerHTML = data.brand;
         cell6.innerHTML = data.model;
-        cell7.innerHTML = data.stato_veicolo;
-        cell8.innerHTML = data.serial_number;
+        cell7.innerHTML = data.serial_number;
     
         cell15.style.display = 'flex'
         cell15.style.flexdirection = 'column';
@@ -182,8 +179,7 @@ function getAllRepairs(){
         cell4.innerHTML = data.type;
         cell5.innerHTML = data.brand;
         cell6.innerHTML = data.model;
-        cell7.innerHTML = data.stato_veicolo;
-        cell8.innerHTML = data.serial_number;
+        cell7.innerHTML = data.serial_number;
     
         cell15.style.display = 'flex'
         cell15.style.flexdirection = 'column';
@@ -252,8 +248,7 @@ function getAllRepairs(){
         cell4.innerHTML = data.type;
         cell5.innerHTML = data.brand;
         cell6.innerHTML = data.model;
-        cell7.innerHTML = data.stato_veicolo;
-        cell8.innerHTML = data.serial_number;
+        cell7.innerHTML = data.serial_number;
         
         cell15.style.display = 'flex'
         cell15.style.flexdirection = 'column';
@@ -332,9 +327,17 @@ function getAllRepairs(){
     cell4.innerHTML = data.product_price;
 
     cell15.style.display = 'flex'
-    cell15.style.flexdirection = 'column';
+    cell15.style.flexdirection = 'row';
 
   
+    var editButton = document.createElement("button");
+    editButton.className = "task_actions_button1";
+    editButton.innerHTML = "<i class='material-icons notranslate'>edit</i>";
+    editButton.onclick = function() {
+      fillElementEditInterface(data);
+    };
+    cell15.appendChild(editButton);
+
     var editButton = document.createElement("button");
     editButton.className = "task_actions_button1";
     editButton.innerHTML = "<i class='material-icons notranslate'>delete</i>";
@@ -368,7 +371,7 @@ function getAllRepairs(){
        var result1 = parseFloat(globalThis.currentRepair.manodopera) + (parseFloat(totalPrice));
        document.getElementById('total_total_price_pdf1').innerText = 'TOTALE +IVA: ' + result1 + ' EURO';
        document.getElementById('data_avviso_pdf1').innerText = 'DATA AVVISO: ' + globalThis.currentRepair.data_avviso;
-       document.getElementById('in_repair_veichle_status_pdf1').innerText = 'STATO VEICOLO: ' + globalThis.currentRepair.stato_veicolo;
+       document.getElementById('in_repair_veichle_status_pdf1').innerText = 'STATO VEICOLO: ' + globalThis.currentRepair.status;
 
        globalThis.totalPrice = totalPrice;
     }
@@ -441,8 +444,7 @@ repairDocRef.update(nuoviDati, { merge: true })
       cell4.innerHTML = data.type;
       cell5.innerHTML = data.brand;
       cell6.innerHTML = data.model;
-      cell7.innerHTML = data.stato_veicolo;
-      cell8.innerHTML = data.serial_number;
+      cell7.innerHTML = data.serial_number;
 
       cell15.style.display = 'flex'
       cell15.style.flexdirection = 'column';
@@ -519,8 +521,7 @@ repairDocRef.update(nuoviDati, { merge: true })
     cell4.innerHTML = data.type;
     cell5.innerHTML = data.brand;
     cell6.innerHTML = data.model;
-    cell7.innerHTML = data.stato_veicolo;
-    cell8.innerHTML = data.serial_number;
+    cell7.innerHTML = data.serial_number;
 
     cell15.style.display = 'flex'
     cell15.style.flexdirection = 'column';
@@ -597,8 +598,7 @@ function getInternalRepairsDesc(){
       cell4.innerHTML = data.type;
       cell5.innerHTML = data.brand;
       cell6.innerHTML = data.model;
-      cell7.innerHTML = data.stato_veicolo;
-      cell8.innerHTML = data.serial_number;
+      cell7.innerHTML = data.serial_number;
   
       cell15.style.display = 'flex'
       cell15.style.flexdirection = 'column';
@@ -673,8 +673,7 @@ function getInternalRepairsAsc(){
       cell4.innerHTML = data.type;
       cell5.innerHTML = data.brand;
       cell6.innerHTML = data.model;
-      cell7.innerHTML = data.stato_veicolo;
-      cell8.innerHTML = data.serial_number;
+      cell7.innerHTML = data.serial_number;
   
       cell15.style.display = 'flex'
       cell15.style.flexdirection = 'column';
@@ -750,8 +749,7 @@ function getEsternalRepairsDesc(){
       cell4.innerHTML = data.type;
       cell5.innerHTML = data.brand;
       cell6.innerHTML = data.model;
-      cell7.innerHTML = data.stato_veicolo;
-      cell8.innerHTML = data.serial_number;
+      cell7.innerHTML = data.serial_number;
   
       cell15.style.display = 'flex'
       cell15.style.flexdirection = 'column';
@@ -816,7 +814,6 @@ function getEsternalRepairsAsc(){
       var cell5 = row.insertCell(5);
       var cell6 = row.insertCell(6);
       var cell7 = row.insertCell(7);
-      var cell8 = row.insertCell(8);
   
       cell2.className = 'data-cell';
     
@@ -826,8 +823,7 @@ function getEsternalRepairsAsc(){
       cell4.innerHTML = data.type;
       cell5.innerHTML = data.brand;
       cell6.innerHTML = data.model;
-      cell7.innerHTML = data.stato_veicolo;
-      cell8.innerHTML = data.serial_number;
+      cell7.innerHTML = data.serial_number;
   
       cell15.style.display = 'flex'
       cell15.style.flexdirection = 'column';
@@ -893,7 +889,6 @@ function getWarrantyRepairsAsc(){
       var cell5 = row.insertCell(5);
       var cell6 = row.insertCell(6);
       var cell7 = row.insertCell(7);
-      var cell8 = row.insertCell(8);
   
       cell2.className = 'data-cell';
     
@@ -903,8 +898,8 @@ function getWarrantyRepairsAsc(){
       cell4.innerHTML = data.type;
       cell5.innerHTML = data.brand;
       cell6.innerHTML = data.model;
-      cell7.innerHTML = data.stato_veicolo;
-      cell8.innerHTML = data.serial_number;
+      cell7.innerHTML = data.serial_number;
+
   
       cell15.style.display = 'flex'
       cell15.style.flexdirection = 'column';
@@ -967,7 +962,7 @@ function getWarrantyRepairsDesc(){
       var cell5 = row.insertCell(5);
       var cell6 = row.insertCell(6);
       var cell7 = row.insertCell(7);
-      var cell8 = row.insertCell(8)
+
   
       cell2.className = 'data-cell';
     
@@ -977,8 +972,7 @@ function getWarrantyRepairsDesc(){
       cell4.innerHTML = data.type;
       cell5.innerHTML = data.brand;
       cell6.innerHTML = data.model;
-      cell7.innerHTML = data.stato_veicolo;
-      cell8.innerHTML = data.serial_number;
+      cell7.innerHTML = data.serial_number;
   
       cell15.style.display = 'flex'
       cell15.style.flexdirection = 'column';
