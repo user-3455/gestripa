@@ -164,7 +164,13 @@ function getAllRepairs(){
        document.getElementById('hand_price_pdf1').innerText = 'MANODOPERA: ' + globalThis.currentRepair.manodopera + ' EURO';
        var result1 = parseFloat(globalThis.currentRepair.manodopera) + (parseFloat(totalPrice));
        document.getElementById('total_total_price_pdf1').innerText = 'TOTALE +IVA: ' + result1 + ' EURO';
-       document.getElementById('data_avviso_pdf1').innerText = 'DATA AVVISO: ' + globalThis.currentRepair.data_avviso;
+       if (globalThis.currentRepair.data_avviso){
+        var parts3 = globalThis.currentRepair.data_avviso.split("-");
+        var converted3 = parts3[2] + "-" + parts3[1] + "-" + parts3[0];
+        document.getElementById('data_avviso_pdf1').innerText = 'DATA AVVISO: ' + converted3;
+       }else{
+        document.getElementById('data_avviso_pdf1').innerText = 'DATA AVVISO:';
+       }
        document.getElementById('in_repair_veichle_status_pdf1').innerText = 'STATO VEICOLO: ' + globalThis.currentRepair.status;
 
        globalThis.totalPrice = totalPrice;

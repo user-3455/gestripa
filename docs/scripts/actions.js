@@ -319,13 +319,17 @@ function deleteRepair(data) {
         document.getElementById('total_total_price_pdf1').innerText = 'TOTALE + IVA: ' + result1 + ' EURO';
        }
        if(document.getElementById('input6').value !== ''){
-        document.getElementById('data_avviso_pdf1').innerText = 'DATA AVVISO: ' + data_avviso.value;
+        var parts1 = data_avviso.value.split("-");
+        var converted = parts1[2] + "-" + parts1[1] + "-" + parts1[0];
+        document.getElementById('data_avviso_pdf1').innerText = 'DATA AVVISO: ' + converted;
        }
        if(document.getElementById('input7').value !== ''){
         document.getElementById('in_repair_veichle_status_pdf1').innerText = 'STATO VEICOLO: ' + status.value;
        }
        if(document.getElementById('inputRITIRO1').value !== ''){
-        document.getElementById('end_pdf1').innerText = 'DATA RITIRO: ' + ritiro.value;
+        var parts2 = ritiro.value.split("-");
+        var converted2 = parts2[2] + "-" + parts2[1] + "-" + parts2[0];
+        document.getElementById('end_pdf1').innerText = 'DATA RITIRO: ' + converted2;
        }
 
       

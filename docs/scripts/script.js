@@ -70,9 +70,17 @@ function showSchedaDiRiparazione(data){
   getRepairProducts();
   document.getElementById('customer_name_pdf1').innerText = 'NOME CLIENTE: ' + data.customer_name;
   document.getElementById('customer_phone_pdf1').innerText = 'NUMERO CLIENTE: ' + data.customer_phone;
-  document.getElementById('start_pdf1').innerText = 'DATA ENTRATA: ' + data.start;
-  document.getElementById('end_pdf1').innerText = 'DATA RITIRO: ' + data.end;
-  document.getElementById('brand_model_pdf1').innerText = 'TIPO APPARECCHIO/MARCHIO/MODELLO: ' + data.type + '/' + data.brand + '/' + data.model;
+  var parts = data.start.split("-");
+  var startConverted = parts[2] + "-" + parts[1] + "-" + parts[0];
+  document.getElementById('start_pdf1').innerText = 'DATA ENTRATA: ' + startConverted;
+  if(data.end !== ' '){
+    var parts4 = data.end.split("-");
+    var endConverted2 = parts4[2] + "-" + parts4[1] + "-" + parts4[0];
+    document.getElementById('end_pdf1').innerText = 'DATA RITIRO: ' + endConverted2;
+} else {
+    document.getElementById('end_pdf1').innerText = 'DATA RITIRO:';
+}
+  document.getElementById('brand_model_pdf1').innerText = 'MACCHINA: ' + data.type + ' ' + data.brand + ' ' + data.model;
   document.getElementById('fault_pdf1').innerText = 'ANOMALIA: ' + data.reported_defect;
 
   document.getElementById('create_new').style.display = 'none';
