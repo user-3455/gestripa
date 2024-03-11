@@ -273,7 +273,8 @@ function deleteRepair(data) {
     function aggiungiDatiAlPdf() {
       var manodopera = document.getElementById('input5');
       var data_avviso = document.getElementById('input6');
-      var stato_veicolo = document.getElementById('input7');
+      var status = document.getElementById('input7');
+      var ritiro = document.getElementById('inputRITIRO1');
   
       const db = firebase.firestore();
     
@@ -289,9 +290,13 @@ function deleteRepair(data) {
           dataToUpdate.data_avviso = data_avviso.value;
       }
   
-      if (stato_veicolo.value !== '') {
-          dataToUpdate.stato_veicolo = stato_veicolo.value;
+      if (status.value !== '') {
+          dataToUpdate.status = status.value;
       }
+
+      if (ritiro.value !== '') {
+        dataToUpdate.end = ritiro.value;
+    }
   
       // Controlla se ci sono dati da aggiornare
       if (Object.keys(dataToUpdate).length === 0) {
@@ -317,15 +322,19 @@ function deleteRepair(data) {
         document.getElementById('data_avviso_pdf1').innerText = 'DATA AVVISO: ' + data_avviso.value;
        }
        if(document.getElementById('input7').value !== ''){
-        document.getElementById('in_repair_veichle_status_pdf1').innerText = 'STATO VEICOLO: ' + stato_veicolo.value;
+        document.getElementById('in_repair_veichle_status_pdf1').innerText = 'STATO VEICOLO: ' + status.value;
        }
+       if(document.getElementById('inputRITIRO1').value !== ''){
+        document.getElementById('end_pdf1').innerText = 'DATA RITIRO: ' + ritiro.value;
+       }
+
       
         })
           .then(() => {
               notificate("Dati aggiunti con successo al pdf", 'normal');
               manodopera.value = '';
               data_avviso.value = '';
-              stato_veicolo.value = '';
+              status.value = '';
           })
           .catch((error) => {
               notificate("Errore durante l'aggiunta dei dati al pdf: " + error, 'error');

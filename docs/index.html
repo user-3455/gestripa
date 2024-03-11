@@ -252,14 +252,14 @@
                     <table class="table1">
                         <thead>
                             <tr>
-                               <th>Azioni</th>
-                               <th>Data ingresso</th>
-                               <th>Stato riparazione</th>
-                               <th>Cliente</th>
-                               <th>Tipo apparecchio</th>
-                               <th>Marca</th>
-                               <th>Modello</th>
-                               <th>Numero di serie</th>
+                                <th>Azioni</th>
+                                <th>Data ingresso</th>
+                                <th>Cliente</th>
+                                <th>Tipo apparecchio</th>
+                                <th>Marca</th>
+                                <th>Modello</th>
+                                <th>Stato riparazione</th>
+                                <th>Numero di serie</th>
                             </tr>
                         </thead>
                         <tbody id="tutteLeRiparazioniTableBody">
@@ -317,11 +317,11 @@
                         <tr>
                             <th>Azioni</th>
                             <th>Data ingresso</th>
-                            <th>Stato riparazione</th>
                             <th>Cliente</th>
                             <th>Tipo apparecchio</th>
                             <th>Marca</th>
                             <th>Modello</th>
+                            <th>Stato riparazione</th>
                             <th>Numero di serie</th>
                         </tr>
                     </thead>
@@ -382,11 +382,11 @@
                         <tr>
                             <th>Azioni</th>
                             <th>Data ingresso</th>
-                            <th>Stato riparazione</th>
                             <th>Cliente</th>
                             <th>Tipo apparecchio</th>
                             <th>Marca</th>
                             <th>Modello</th>
+                            <th>Stato riparazione</th>
                             <th>Numero di serie</th>
                         </tr>
                     </thead>
@@ -446,11 +446,11 @@
                         <tr>
                             <th>Azioni</th>
                             <th>Data ingresso</th>
-                            <th>Stato riparazione</th>
                             <th>Cliente</th>
                             <th>Tipo apparecchio</th>
                             <th>Marca</th>
                             <th>Modello</th>
+                            <th>Stato riparazione</th>
                             <th>Numero di serie</th>
                         </tr>
                     </thead>
@@ -479,12 +479,17 @@
                 <input class="input1" type="number" id="input5" placeholder="MANODOPERA">
                 <label class="general_paragraph1" for="input6">DATA AVVISO</label>
                 <input class="input1" style="resize: none;" type="date" id="input6">
+                <label class="general_paragraph1" for="inputRITIRO1">DATA RITIRO</label>
+                <input class="input1" style="resize: none;" type="date" id="inputRITIRO1">
                 <label class="general_paragraph1" for="input7">STATO ATTUALE</label>
                 <select class="input1" type="" id="input7">
-                    <option value="FUORI USO">FUORI USO</option>
+                    <option value="IN ENTRATA">IN ENTRATA</option>
+                    <option value="RITIRATO">RITIRATO</option>
                     <option value="PREVENTIVO">PREVENTIVO</option>
                     <option value="ATTESA RICAMBI">ATTESA RICAMBI</option>
+                    <option value="IN LAVORAZIONE">IN LAVORAZIONE</option>
                     <option value="PRONTO">PRONTO</option>
+                    <option value="FUORI USO">FUORI USO</option>
                 </select>
             </div>
             <div style="width: 100%; flex-wrap: wrap; display: flex; align-items: center; justify-content: center; margin-top: 1rem; margin-bottom: 1rem; gap: 10px;">
@@ -496,7 +501,7 @@
             <h3 id="customer_name_pdf1" style="width: 100%;" class="general_paragraph1">NOME CLIENTE: </h3>
             <h3 id="customer_phone_pdf1" style="width: 100%;" class="general_paragraph1">NUMERO CLIENTE: </h3>
             <h3 id="start_pdf1" style="width: 100%;" class="general_paragraph1">DATA ENTRATA: </h3>
-            <h3 id="end_pdf1" style="width: 100%;" class="general_paragraph1">DATA USCITA: </h3>
+            <h3 id="end_pdf1" style="width: 100%;" class="general_paragraph1">DATA RITIRO: </h3>
             <h3 id="brand_model_pdf1" style="width: 100%;" class="general_paragraph1">MARCA/MODELLO: </h3>
             <h3 id="fault_pdf1" style="width: 100%;" class="general_paragraph1">ANOMALIA: </h3>
             <div class="table_container1" style="margin-bottom: -0.1rem; width: 100%; margin-bottom: 2rem;">
