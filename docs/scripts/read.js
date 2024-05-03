@@ -85,16 +85,18 @@ function getAllRepairs(){
     let totalPriceSum = 0; 
 
     userTasksRef.get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          const data = doc.data();
-          createTableRow(data);
-          if (data.product_price) {
-            totalPriceSum = data.product_price * data.quantity;
-          }
-        });
-        displayTotalPrice(totalPriceSum);
-      })
+    .then((querySnapshot) => {
+      let totalPriceSum = 0; // Inizializzazione a 0
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        createTableRow(data);
+        if (data.product_price) {
+          totalPriceSum += data.product_price * data.quantity; // Aggiungi al totalPriceSum anziché sovrascrivere
+        }
+      });
+      displayTotalPrice(totalPriceSum);
+    })
+    
       .catch((error) => {
         alert('Errore durante il recupero di tutti i prodotti aggiunti alla riparazione: ', error);
       });
