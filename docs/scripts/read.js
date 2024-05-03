@@ -90,7 +90,7 @@ function getAllRepairs(){
           const data = doc.data();
           createTableRow(data);
           if (data.product_price) {
-            totalPriceSum += parseFloat(data.product_price);
+            totalPriceSum = data.product_price * data.quantity;
           }
         });
         displayTotalPrice(totalPriceSum);
