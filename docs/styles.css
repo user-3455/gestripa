@@ -1,28 +1,49 @@
-html, body{
+body, html {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    background: rgb(222, 221, 221);
+    background: rgb(255, 255, 255);
+    overflow-y: hidden;
+    overflow-x: hidden;
+    font-family: 'Inter Tight';
 }
 
-#master_container{
-    display: flex;
+input{
+    font-family: 'Inter Tight';
+}
+
+select{
+    font-family: 'Inter Tight';
+}
+
+
+#master_container {
+    display: none;
     padding-bottom: 1.5rem;
     flex-direction: row;
-    align-items: start;
-    justify-content: center;
     width: 100%;
-    height: auto;
+    height: calc(100% - 4rem);
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
-#left_bar{
-    width: 13rem;
-    height: 95%;
-    background: rgba(255, 255, 255, 0.664);
-    border-radius: 2rem;
-    border: 1px solid rgba(0, 0, 0, 0.046);
+#header {
+    height: 4rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.323);
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+#left_bar {
+    display: flex;
+    background: rgb(255, 255, 255);
+    width: 17em;
+    height: 100%;
+    border-right: 1px solid rgba(0, 0, 0, 0.323);
     flex-direction: column;
     padding-bottom: 1.5rem;
     align-items: center;
@@ -30,244 +51,241 @@ html, body{
     overflow-y: auto;
 }
 
-#under_bar{
+#under_bar {
     display: none;
 }
 
-.card1{
-    background: rgba(255, 255, 255, 0.664);
-    border-radius: 2rem;
-    border: 1px solid rgba(0, 0, 0, 0.046);
-}
-
-.button1{
-    background: rgb(255, 255, 255);
-    width: 80%;
-    height: 2rem;
-    border: 1px solid rgba(0, 0, 0, 0.228);
-    border-radius: 2rem;
+.button1 {
+    background: transparent;
+    font-size: 0.9rem;
+    height: 2.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.323);
+    border-radius: 0.5rem;
     color: black;
     cursor: pointer;
-    font-family: 'Lato';
+    font-family: 'Inter Tight';
+    transition: 0.1s ease-in background;
 }
 
-.button1:hover{
-    font-weight: bold;
-    border: 1px solid rgba(0, 0, 0, 0.527);
+.button1:hover {
+    background: rgba(0, 0, 0, 0.104);
+    transition: 0.1s ease-in background;
 }
 
-.general_paragraph1{
+.general_paragraph1 {
     color: black;
-    font-family: 'Lato';
+    font-family: 'Inter Tight';
 }
 
-.input1{
-    border-radius: 2rem;
-    border: 1px solid rgba(0, 0, 0, 0.299);
-    height: 1.5rem;
+.input1 {
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.323);
+    height: 2.5rem;
     resize: vertical;
+    background: rgba(255, 255, 255, 0.244);
 }
 
-#riparazioni_in_garanzia{
-    width: calc(100% - 18rem); 
-    height: 95%;
+#riparazioni_in_garanzia {
+    padding-left: 1rem;
+    flex: 1;
+    height: 100%;
     display: none;
-    padding-bottom: 1.5rem;
-    flex-direction: column;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    align-items: center;
-}
-
-#riparazioni_interne{
-    width: calc(100% - 18rem); 
-    height: 95%;
-    display: none;
-    flex-direction: column;
-    padding-bottom: 1.5rem;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    align-items: center;
-}
-
-#riparazioni_esterne{
-    width: calc(100% - 18rem); 
-    height: 95%;
-    display: none;
-    padding-bottom: 1.5rem;
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: auto;
-    align-items: center;
 }
 
-#tutte_le_riparazioni{
-    width: calc(100% - 18rem); 
-    height: 95%;
+#riparazioni_interne {
+    padding-left: 1rem;
+    flex: 1;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#riparazioni_esterne {
+    padding-left: 1rem;
+    flex: 1;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#tutte_le_riparazioni {
+    padding-left: 1rem;
+    flex: 1;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    padding-bottom: 1.5rem;
     overflow-x: hidden;
-    overflow-y: hidden;
-    align-items: center;
+    overflow-y: auto;
 }
 
-#change_repairs{
-    width: calc(100% - 18rem); 
-    height: 95%;
+#change_repairs {
+    padding-left: 1rem;
+    flex: 1;
+    height: 100%;
     display: none;
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: auto;
-    align-items: center;
 }
 
 
-#create_new{
-    width: calc(100% - 18rem); 
-    height: 95%;
-    display: none;
-    flex-direction: column;
-    overflow-x: auto;
-    overflow-y: auto;
-    align-items: center;
-}
-
-#scheda_di_lavorazione{
-    width: calc(100% - 18rem); 
-    height: 95%;
+#create_new {
+    padding-left: 1rem;
+    flex: 1;
+    height: 100%;
     display: none;
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: auto;
-    align-items: center;
 }
 
-#change_repairs{
-    width: calc(100% - 18rem); 
-    height: 95%;
+#scheda_di_lavorazione {
+    padding-left: 1rem;
+    flex: 1;
+    height: 100%;
     display: none;
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: auto;
-    align-items: center;
 }
 
-#login{
+#change_repairs {
+    padding-left: 1rem;
+    flex: 1;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#login {
     display: none;
     width: 100%;
     height: 100%;
-    align-items: center;
+    display: flex;
     justify-content: center;
     position: absolute;
     z-index: 9999;
-    background: rgba(0, 0, 0, 0.208);
+    background: rgb(255, 255, 255);
+}
+
+.inputGroup{
+    border: 1px solid rgba(0, 0, 0, 0.249);
+    border-radius: 0.5rem;
+    height: 2.5rem;
+    overflow: hidden;
+}
+
+.table1 {
+    border-collapse: collapse;
+    border-radius: 10px;
+    font-family: 'Inter Tight';
+    text-align: start;
+}
+
+.table1 th{
+    height: 2.5rem;
+    text-align: start;
+    padding-left: 0.5rem;
 }
 
 
-.table_container1{
-    border: 1px solid rgba(0, 0, 0, 0.128);
-    border-radius: 10px; 
-    overflow-x: auto;
-    margin-bottom: 1.5rem;
-    }
-    
-    .table1 {
-    border-collapse: collapse;
-    border-radius: 10px;
-    font-family: 'Lato';
-    }
-    
-    .table1 th, .table1 td {
+.table1 td {
     text-align: left;
-    border: 1px solid rgba(0, 0, 0, 0.221);
     padding: 8px;
     color: black;
-    }
+    text-align: start;
+}
 
-    .description_table_section{
-        max-width: 10rem;
-        overflow-x: auto;
-    }
+.table1 tr {
+    border-left: 1px solid rgba(0, 0, 0, 0.323);
+    border-right: 1px solid rgba(0, 0, 0, 0.323);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.323);
+}
 
-    #notification1{
-        display: none;
-        pointer-events: none;
-        position: fixed;
-        z-index: 999999999999;
-        height: 100%;
-        width: 100%;
-        flex-direction: column;
-        justify-content: start;
-        align-items: end;
-        overflow-y: auto;
-    }
+.table1 tr:hover {
+    background: rgba(0, 0, 0, 0.042);
+}
 
-    .crd1010{
-        background-color: rgb(247, 247, 247);
-        padding: 1rem;
-        font-family: 'Lato';
-    }
-
-
-    
-    .task_actions_button1{
-        color: rgb(40, 39, 39);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: transparent;
-        border: 1px solid rgba(0, 0, 0, 0.107);
-        border-radius: 50%;
-        height: 40px;
-        width: 40px;
-        margin-left: 0.2rem;
-        margin-right: 0.2rem;
-        cursor: pointer;
-    }
-    
-    .task_actions_button1:hover{
-        background-color: rgba(0, 0, 0, 0.208);
-    }
-
-
-    
-.description_table_section{
+.description_table_section {
     max-width: 10rem;
     overflow-x: auto;
 }
 
+#notification1 {
+    display: none;
+    pointer-events: none;
+    position: fixed;
+    z-index: 999999999999;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: start;
+    align-items: end;
+    overflow-y: auto;
+}
+
+.crd1010 {
+    background: white;
+    padding: 1rem;
+    font-family: 'Inter Tight';
+}
+
+.task_actions_button1 {
+    color: rgb(40, 39, 39);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.323);
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    cursor: pointer;
+}
+
+.task_actions_button1:hover {
+    background-color: rgba(0, 0, 0, 0.208);
+}
+
+@media screen and (min-width: 1000px) {
+    #left_bar {
+        display: flex;
+    }
+}
 
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 999px) {
 
-    .resp_div40{
+    .resp_div40 {
         flex-direction: column !important;
     }
 
-    .card1{
+    .card1 {
         border-radius: 1rem;
     }
 
-    .resp_div1{
-        flex-direction: column !important;
-    }
-    
-    .resp_div2{
+    .resp_div2 {
         width: 95% !important;
     }
 
-    #left_bar{
-        display: none;
+    #left_bar {
+        position: absolute;
+        z-index: 9999;
     }
 
-    #master_container{
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #under_bar{
+    #under_bar {
         display: flex;
         color: black;
         width: 100%;
@@ -281,48 +299,7 @@ html, body{
         justify-content: space-evenly;
     }
 
-    #riparazioni_in_garanzia{
-        height: calc(95% - 4rem);
-        width: 95%;
-    }
-
-    #scheda_di_lavorazione{
-        height: calc(95% - 4rem);
-        width: 95%;
-    }
-    
-    
-    #riparazioni_interne{
-        height: calc(95% - 4rem);
-        width: 95%;
-    }
-
-    #riparazioni_esterne{
-        height: calc(95% - 4rem);
-        width: 95%;
-    }
-    
-    #tutte_le_riparazioni{
-        height: calc(95% - 4rem);
-        width: 95%;
-    }
-    
-    #change_repairs{
-        height: calc(95% - 4rem);
-        width: 95%;
-    }
-    
-    #create_new{
-        height: calc(95% - 4rem);
-        width: 95%;
-    }
-
-    #change_repairs{
-        height: calc(95% - 4rem);
-        width: 95%;
-    }
-
-    .under_bar_button1{
+    .under_bar_button1 {
         color: black;
         display: flex;
         flex-direction: column;
@@ -333,29 +310,3 @@ html, body{
         height: 90%;
     }
 }
-
-
-@media screen and (min-width: 1001px) {
-
-    #master_container{
-        padding-top: 1.5rem;
-    }
-
-    ::-webkit-scrollbar{
-        border-radius: 1rem;
-        width: 10px;
-    }
-    
-    ::-webkit-scrollbar-thumb{
-        border-radius: 1rem;
-        background-color: rgb(155, 155, 155);
-    }
-    
-    ::-webkit-scrollbar-thumb:hover{
-        border-radius: 1rem;
-        background-color: rgb(68, 68, 68);
-    }
-    
-    
-}
-
