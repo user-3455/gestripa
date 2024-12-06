@@ -50,9 +50,7 @@ function aggiungiRiparazione() {
         reported_defect.value = '';
         customer_name.value = '';
         customer_phone.value = '';
-        getAllRepairs('');
-        getInternalRepairs('');
-        getWarrantyRepairs('');
+        updateLastSerialNumber();
       })
       .catch((error) => {
         notificate("Errore durante l'aggiunta della riparazione: " + error, 'error');
@@ -61,6 +59,30 @@ function aggiungiRiparazione() {
     notificate('Si prega di inserire una data di ingresso valida', 'error');
   }
 }
+
+function updateLastSerialNumber() {
+  const docRef = firebase.firestore().collection("sys").doc("counters");
+
+  docRef.get()
+    .then((doc) => {
+      if (doc.exists) {
+        const lastSerialNumber = Number(doc.data()['last_serial_number'] || 0); // Valore di default se non esiste
+        const dataToUpdate = { last_serial_number: lastSerialNumber + 1 };
+
+        return docRef.set(dataToUpdate, { merge: true });
+      } else {
+        alert('Nessun ultimo numero di serie trovato');
+        return Promise.reject('Documento non trovato');
+      }
+    })
+    .then(() => {
+      console.log("Documento aggiornato con successo!");
+    })
+    .catch((error) => {
+      console.error("Errore durante l'aggiornamento del documento:", error);
+    });
+}
+
 
 
 function saveElementChanges1() {
@@ -93,9 +115,7 @@ function deleteRepair(data) {
     docRef.delete()
       .then(() => {
         notificate('Riparazione eliminata con successo', 'normal');
-        getAllRepairs('');
-        getInternalRepairs('');
-        getWarrantyRepairs('');
+        refreshFiltersInTable();
       })
       .catch((error) => {
         notificate("Errore durante l'eliminazione della riparazione:" + error, 'error');

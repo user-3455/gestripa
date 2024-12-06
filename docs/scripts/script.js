@@ -18,12 +18,30 @@ function closeSidebarMobile() {
   }
 }
 
+
+function getLastSerialNumber() {
+  const serialNumberInput = document.getElementById('serial_number1');
+
+  firebase.firestore().collection("sys").doc("counters").get().then((doc) => {
+    if (doc.exists) {
+      serialNumberInput.value = new Date().getFullYear() + '-' + (Number(doc.data()['last_serial_number']) + 1);
+      return (Number(doc.data()['last_serial_number']) + 1);
+    } else {
+      alert('Nessun ultimo numero di serie trovato');
+    }
+  }).catch((error) => {
+    console.log("Error getting document:", error);
+  });
+}
+
 function showCreate() {
   document.getElementById('create_new').style.display = 'flex';
   document.getElementById('change_repairs').style.display = 'none';
   document.getElementById('tutte_le_riparazioni').style.display = 'none';
   document.getElementById('scheda_di_lavorazione').style.display = 'none';
   animate1('create_new');
+
+  getLastSerialNumber();
 }
 
 function showChangeRepair() {
@@ -44,16 +62,16 @@ function showRepairs(type) {
   animate1('tutte_le_riparazioni');
 
   const repairTypeDisplay = document.getElementById('repair-type-display');
-  if(type == 'TUTTE'){
+  if (type == 'TUTTE') {
     repairTypeDisplay.innerText = 'Tutte le riparazioni';
   }
-  if(type == 'INTERNA'){
+  if (type == 'INTERNA') {
     repairTypeDisplay.innerText = 'Riparazioni interne';
   }
-  if(type == 'ESTERNA'){
+  if (type == 'ESTERNA') {
     repairTypeDisplay.innerText = 'Riparazioni esterne';
   }
-  if(type == 'GARANZIA'){
+  if (type == 'GARANZIA') {
     repairTypeDisplay.innerText = 'Riparazioni in garanzia';
   }
 
