@@ -237,7 +237,7 @@
             </div>
         </div>
 
-        <div id="tutte_le_riparazioni" style="display: none;">
+        <div id="tutte_le_riparazioni">
             <div style="width: 100%; height: 100%; overflow-x: hidden; overflow-y: auto;">
                 <h1 id="repair-type-display" style="margin-bottom: 0.5rem;" class="general_paragraph1">Tutte le riparazioni</h1>
                 <div style="display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap;">
@@ -305,7 +305,7 @@
             </div>
         </div>
 
-        <div id="scheda_di_lavorazione" style="display: flex; padding-right: 1rem;">
+        <div id="scheda_di_lavorazione" style="display: none; padding-right: 1rem;">
             <h1 class="general_paragraph1" style="display: flex; flex-direction: row; align-items: center; gap: 0.5rem; flex-wrap: wrap;">Scheda di lavorazione <span onclick="javascript:demoFromHTML();" class="material-symbols-outlined notranslate" style="font-size: 2.2rem; color: black; cursor: pointer;">download</span></h1>
             <div style="width: 100%; flex-wrap: wrap; display: flex; align-items: center; justify-content: center; gap: 1rem; ; margin-top: 1rem;">
                 <input class="input1" type="text" id="input1" placeholder="QUANTITA'" style="flex: 1;">
@@ -376,8 +376,8 @@
             </div>
         </div>
 
-        <div id="change-element1" style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow-y: auto; overflow-x: hidden; position: absolute; z-index: 9999999999; background: rgba(0, 0, 0, 0.356);">
-            <div class="card1" style="width: 90%; background: white; border-radius: 1rem; border: 1px solid  rgba(0, 0, 0, 0.323);">
+        <div id="change-element1" style="width: 100%; height: 100%; display: none; flex-direction: column; align-items: center; justify-content: center; overflow-y: auto; overflow-x: hidden; position: absolute; z-index: 9999999999; background: rgba(0, 0, 0, 0.356);">
+            <div class="card1" style="width: 100%; max-width: 50rem; background: white; border-radius: 1rem; border: 1px solid  rgba(0, 0, 0, 0.323); padding-bottom: 1rem;">
                 <h1 style="display: flex; flex-direction: row; align-items: center; margin-left: 1rem;" class="general_paragraph1">Modifica elemento
                     <div style="flex: 1;"></div>
                     <span style="cursor: pointer; margin-right: 1.5rem;" onclick="document.getElementById('change-element1').style.display = 'none'; " class="material-symbols-outlined">close</span>

@@ -11,7 +11,7 @@ function getRepairsDef() {
     .firestore()
     .collection('repairs')
     .orderBy('timestamp', fetchOrderSelector.value)
-    .limit(0);
+    .limit(8);
 
     // Applica il filtro solo se necessario
     if (globalThis.repairType !== 'TUTTE') {
