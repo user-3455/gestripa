@@ -88,6 +88,7 @@ function showSchedaDiRiparazione(data) {
   getRepairProducts();
   document.getElementById('customer_name_pdf1').innerText = 'NOME CLIENTE: ' + data.customer_name;
   document.getElementById('customer_phone_pdf1').innerText = 'NUMERO CLIENTE: ' + data.customer_phone;
+  document.getElementById('serial_number_pdf1').innerText = 'NUMERO DI SERIE: ' + data.serial_number;
   var parts = data.start.split("-");
   var startConverted = parts[2] + "-" + parts[1] + "-" + parts[0];
   document.getElementById('start_pdf1').innerText = 'DATA ENTRATA: ' + startConverted;
