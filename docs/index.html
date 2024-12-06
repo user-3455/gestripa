@@ -57,7 +57,7 @@
         </div>
 
         <div id="left_bar" style="flex-shrink: 0;">
-            <div style="width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden; display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 1rem; margin-bottom: 1rem;">
+            <div style="width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
                 <img src="res/logo.png" style="width: 85%; margin-top: 1.5rem; border-radius: 0.5rem;">
                 <button onclick="showCreate(); closeSidebarMobile();" style="width: 85%; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">add</span>Nuova entrata</button>
                 <button onclick="showRepairs('TUTTE'); closeSidebarMobile();" style="width: 85%; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">clear_all</span>Tutte le riparazioni</button>
@@ -65,7 +65,7 @@
                 <button onclick="showRepairs('ESTERNA'); closeSidebarMobile();" style="width: 85%; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">clear_all</span>Riparazioni esterne</button>
                 <button onclick="showRepairs('GARANZIA'); closeSidebarMobile();" style="width: 85%; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">clear_all</span>Riparazioni in garanzia</button>
                 <div style="flex: 1;"></div>
-                <button onclick="logout();" style="width: 85%; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">logout</span>Disconnetti</button>
+                <button onclick="logout();" style="width: 85%; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem; margin-bottom: 1rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">logout</span>Disconnetti</button>
             </div>
 
         </div>
@@ -299,7 +299,7 @@
                         </table>
                 </div>
                 <p id="no-data-available" style="display: none; width: 100%; text-align: center;">Nessun dato corrisponde ai criteri di ricerca</p>
-                <button class="button1" onclick="getRepairsDef();" style="margin-top: 1rem; width: calc(100% - 1rem); margin-right: 1rem;">Carica altre</button>
+                <button class="button1" onclick="getRepairsDef();" style="margin-top: 1rem; width: calc(100% - 1rem); margin-right: 1rem; margin-bottom: 1rem;">Carica altre</button>
             </div>
         </div>
 

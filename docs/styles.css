@@ -283,6 +283,7 @@ select{
     #left_bar {
         position: absolute;
         z-index: 9999;
+        height: calc(100% - 4rem);
     }
 
     #under_bar {
