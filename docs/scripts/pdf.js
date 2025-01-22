@@ -93,28 +93,32 @@ function generatePDFWithImageAndText(base64Image) {
     // Aggiungi un'immagine nella parte superiore
     doc.addImage(base64Image, "PNG", 50, 10, 100, 40); // (x, y, width, height)
 
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(18);
+    doc.text("Scheda di lavorazione", 10, 60);
+
     // Aggiungi un sottotitolo o un paragrafo
     doc.setFont("helvetica", "normal");
     doc.setFontSize(12);
 
-    doc.text('NOME CLIENTE: ' + globalThis.currentRepair.customer_name, 10, 60);
-    doc.text('NUMERO CLIENTE: ' + globalThis.currentRepair.customer_phone, 10, 70);
-    doc.text('NUMERO DI SERIE: ' + globalThis.currentRepair.serial_number, 10, 80);
+    doc.text('NOME CLIENTE: ' + globalThis.currentRepair.customer_name, 10, 80);
+    doc.text('NUMERO CLIENTE: ' + globalThis.currentRepair.customer_phone, 10, 90);
+    doc.text('NUMERO DI SERIE: ' + globalThis.currentRepair.serial_number, 10, 100);
 
     var parts = globalThis.currentRepair.start.split("-");
     var startConverted = parts[2] + "-" + parts[1] + "-" + parts[0];
-    doc.text('DATA ENTRATA: ' + startConverted, 10, 90);
+    doc.text('DATA ENTRATA: ' + startConverted, 10, 110);
     if (globalThis.currentRepair.end !== ' ') {
         var parts4 = globalThis.currentRepair.end.split("-");
         var endConverted2 = parts4[2] + "-" + parts4[1] + "-" + parts4[0];
-        doc.text('DATA RITIRO: ' + endConverted2, 10, 100);
+        doc.text('DATA RITIRO: ' + endConverted2, 10, 120);
     } else {
-        doc.text('DATA RITIRO:', 10, 100);
+        doc.text('DATA RITIRO:', 10, 120);
     }
-    doc.text('MACCHINA: ' + globalThis.currentRepair.type + ' ' + globalThis.currentRepair.brand + ' ' + globalThis.currentRepair.model, 10, 110);
-    doc.text('ANOMALIA: ' + globalThis.currentRepair.reported_defect, 10, 120);
-    doc.text('ACCESSORI: ' + globalThis.currentRepair.accessories, 10, 130);
-    doc.text('TIPO RIPARAZIONE: ' + globalThis.currentRepair.repair_type, 10, 140);
+    doc.text('MACCHINA: ' + globalThis.currentRepair.type + ' ' + globalThis.currentRepair.brand + ' ' + globalThis.currentRepair.model, 10, 130);
+    doc.text('ANOMALIA: ' + globalThis.currentRepair.reported_defect, 10, 140);
+    doc.text('ACCESSORI: ' + globalThis.currentRepair.accessories, 10, 150);
+    doc.text('TIPO RIPARAZIONE: ' + globalThis.currentRepair.repair_type, 10, 160);
 
 
     const columnIndexes = [1, 2, 3, 4]; // Prendi solo queste colonne (parto a contare dalla colonna 0)
@@ -126,7 +130,7 @@ function generatePDFWithImageAndText(base64Image) {
     doc.autoTable({
         head: [headers],
         body: data,
-        startY: 150, // Posiziona la tabella a partire dalla coordinata Y
+        startY: 170, // Posiziona la tabella a partire dalla coordinata Y
     });
 
     // Recupera la posizione finale della tabella
