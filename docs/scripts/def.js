@@ -1,5 +1,20 @@
 let lastVisible = null;
 let allRepairs = [];
+let limit = 10;
+
+function setGetRepairsQueryLimit(){
+    lastVisible = null;
+    allRepairs = [];
+
+    const repairQueryLimitInput = document.getElementById('repair_query_limit_input');
+    if(repairQueryLimitInput.value != ''){
+      limit = Number(repairQueryLimitInput.value);
+    }else{
+      limit = 10;
+    }
+
+    getRepairsDef();
+}
 
 function getRepairsDef() {
     const noDataAvailable = document.getElementById('no-data-available');
@@ -7,11 +22,12 @@ function getRepairsDef() {
     const fetchOrderSelector = document.getElementById('fetch-order-selector');
     const statusSelector = document.getElementById('fetch-status-selector');
 
+
     let query = firebase
     .firestore()
     .collection('repairs')
     .orderBy('timestamp', fetchOrderSelector.value)
-    .limit(8);
+    .limit(limit);
 
     // Applica il filtro solo se necessario
     if (globalThis.repairType !== 'TUTTE') {
@@ -79,10 +95,13 @@ function createTableRows(dataArray, tableId) {
         var cell1 = row.insertCell(1);
         var cell2 = row.insertCell(2);
         var cell3 = row.insertCell(3);
+        /*
         var cell4 = row.insertCell(4);
         var cell5 = row.insertCell(5);
-        var cell6 = row.insertCell(6);
-        var cell7 = row.insertCell(7);
+        */
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        var cell7 = row.insertCell(6);
 
         cell2.className = 'data-cell';
 
@@ -91,9 +110,11 @@ function createTableRows(dataArray, tableId) {
 
         cell1.innerHTML = startConverted;
         cell2.innerHTML = data.customer_name;
-        cell3.innerHTML = data.type;
-        cell4.innerHTML = data.brand;
-        cell5.innerHTML = data.model;
+        cell3.innerHTML = data.type + ' ' + data.brand + ' ' + data.model;
+        /* 
+        cell4.innerHTML = ;
+        */
+        cell5.innerHTML = data.repair_type;
         cell6.innerHTML = data.status;
         cell7.innerHTML = data.serial_number;
 

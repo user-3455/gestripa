@@ -101,6 +101,8 @@ function showSchedaDiRiparazione(data) {
   }
   document.getElementById('brand_model_pdf1').innerText = 'MACCHINA: ' + data.type + ' ' + data.brand + ' ' + data.model;
   document.getElementById('fault_pdf1').innerText = 'ANOMALIA: ' + data.reported_defect;
+  document.getElementById('accessori_consegnati_pdf1').innerText = 'ACCESSORI: ' + data.accessories;
+  document.getElementById('rapair_type_pdf1').innerText = 'TIPO RIPARAZIONE: ' + data.repair_type;
 
   document.getElementById('create_new').style.display = 'none';
   document.getElementById('change_repairs').style.display = 'none';
