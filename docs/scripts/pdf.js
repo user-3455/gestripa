@@ -95,7 +95,7 @@ function generatePDFWithImageAndText(base64Image) {
 
     doc.setFont("helvetica", "bold");
     doc.setFontSize(18);
-    doc.text("Scheda di lavorazione", 10, 60);
+    doc.text("Scheda di lavorazione", 10, 70);
 
     // Aggiungi un sottotitolo o un paragrafo
     doc.setFont("helvetica", "normal");
