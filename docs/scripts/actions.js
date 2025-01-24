@@ -14,9 +14,8 @@ function aggiungiRiparazione() {
     const endValue = document.getElementById('end1').value;
     const end = endValue.trim() === '' ? ' ' : endValue;
 
-    const db = firebase.firestore();
 
-    const path = db.collection('repairs').doc();
+    const path = firebase.firestore().collection('repairs').doc();
 
     const data = {
       repair_type: document.getElementById('repair_type1').value,
@@ -86,7 +85,7 @@ function updateLastSerialNumber() {
 
 
 function saveElementChanges1() {
-  var docRef = db.collection("repairs").doc(globalThis.currentRepair.id).collection('products').doc(globalThis.currentRepairElement.id);
+  var docRef = firebase.firestore().collection("repairs").doc(globalThis.currentRepair.id).collection('products').doc(globalThis.currentRepairElement.id);
 
   docRef.update({
     quantity: document.getElementById('change-input1').value,
@@ -109,8 +108,7 @@ function saveElementChanges1() {
 function deleteRepair(data) {
   var conferma = confirm("Sei sicuro di voler eliminare la riparazione?");
   if (conferma) {
-    const db = firebase.firestore();
-    const docRef = db.collection('repairs').doc(data.id);
+    const docRef = firebase.firestore().collection('repairs').doc(data.id);
 
     docRef.delete()
       .then(() => {
@@ -126,8 +124,7 @@ function deleteRepair(data) {
 function deleteRepairProduct(data) {
   var conferma = confirm("Sei sicuro di voler eliminare questo elemento?");
   if (conferma) {
-    const db = firebase.firestore();
-    const docRef = db.collection('repairs').doc(globalThis.currentRepair.id).collection('products').doc(data.id);
+    const docRef = firebase.firestore().collection('repairs').doc(globalThis.currentRepair.id).collection('products').doc(data.id);
 
     docRef.delete()
       .then(() => {
@@ -202,7 +199,7 @@ function getRepairDataToFill(data) {
 
 
 function changeRepair() {
-  const path = db.collection('repairs').doc(globalThis.currentRepair.id);
+  const path = firebase.firestore().collection('repairs').doc(globalThis.currentRepair.id);
 
   const data = {
     repair_type: document.getElementById('repair_type2').value,
@@ -225,10 +222,7 @@ function changeRepair() {
   path.update(data)
     .then(() => {
       notificate("Riparazione modificata con successo", 'normal');
-      showTutteLeRiparazioni();
-      getAllRepairs('');
-      getInternalRepairs('');
-      getWarrantyRepairs('');
+      showRepairs('TUTTE');
     })
     .catch((error) => {
       notificate("Errore durante la modifica della riparazione: " + error, 'error');
@@ -248,9 +242,7 @@ function aggiungiCelle() {
           var product_description = document.getElementById('input3');
           var product_price = document.getElementById('input4');
 
-          const db = firebase.firestore();
-
-          const path = db.collection('repairs').doc(globalThis.currentRepair.id).collection('products').doc();
+          const path = firebase.firestore().collection('repairs').doc(globalThis.currentRepair.id).collection('products').doc();
 
           const data = {
             quantity: document.getElementById('input1').value,
@@ -296,9 +288,7 @@ function aggiungiDatiAlPdf() {
   var status = document.getElementById('input7');
   var ritiro = document.getElementById('inputRITIRO1');
 
-  const db = firebase.firestore();
-
-  const path = db.collection('repairs').doc(globalThis.currentRepair.id);
+  const path = firebase.firestore().collection('repairs').doc(globalThis.currentRepair.id);
 
   const dataToUpdate = {};
 
