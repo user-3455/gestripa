@@ -25,6 +25,7 @@ function aggiungiRiparazione() {
       type: document.getElementById('type1').value,
       brand: document.getElementById('brand1').value,
       model: document.getElementById('model1').value,
+      specific_place: document.getElementById('add_repair_specific_place_selector').value,
       serial_number: document.getElementById('serial_number1').value,
       accessories: document.getElementById('accessories1').value,
       reported_defect: document.getElementById('reported_defect1').value,
@@ -148,6 +149,7 @@ function getRepairDataToFill(data) {
   var type = document.getElementById('type2');
   var brand = document.getElementById('brand2');
   var model = document.getElementById('model2');
+  var specificPlace = document.getElementById('change_repair_specific_place_selector');
   var serial_number = document.getElementById('serial_number2');
   var accessories = document.getElementById('accessories2');
   var status_description = document.getElementById('status_description2');
@@ -155,17 +157,16 @@ function getRepairDataToFill(data) {
   var customer_name = document.getElementById('customer_name2');
   var customer_phone = document.getElementById('customer_phone2');
 
-
   type.value = data.type;
   brand.value = data.brand;
   model.value = data.model;
+  specificPlace.value = data.specific_place;
   serial_number.value = data.serial_number;
   accessories.value = data.accessories;
   status_description.value = data.status_description;
   reported_defect.value = data.reported_defect;
   customer_name.value = data.customer_name;
   customer_phone.value = data.customer_phone;
-
 
   var menu2 = document.getElementById("status2");
   for (var i = 0; i < menu2.options.length; i++) {
@@ -194,6 +195,15 @@ function getRepairDataToFill(data) {
 
   document.getElementById('start2').value = data.start;
   document.getElementById('end2').value = data.end;
+
+
+  const repairSpecificPlaceSelectorContainer = document.getElementById('change_repair_specific_place_container');
+  if(data.repair_type == 'ESTERNA' || data.repair_type == 'GARANZIA'){
+    repairSpecificPlaceSelectorContainer.style.display = 'flex';
+  }else{
+    repairSpecificPlaceSelectorContainer.style.display = 'none';
+  }
+
 }
 
 
@@ -209,6 +219,7 @@ function changeRepair() {
     type: document.getElementById('type2').value,
     brand: document.getElementById('brand2').value,
     model: document.getElementById('model2').value,
+    specific_place: document.getElementById('change_repair_specific_place_selector').value,
     serial_number: document.getElementById('serial_number2').value,
     accessories: document.getElementById('accessories2').value,
     status_description: document.getElementById('status_description2').value,

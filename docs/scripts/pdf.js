@@ -1,6 +1,6 @@
 function demoFromHTML() {
     // Chiama la funzione per generare il PDF
-    convertImageToBase64('res/logo.png');
+    convertImageToBase64('res/mirto_testata_calendari_2022.png');
     /*
      var pdf = new jsPDF('p', 'pt', 'letter');
    source = $('#customers')[0];
@@ -91,7 +91,7 @@ function generatePDFWithImageAndText(base64Image) {
     const doc = new jsPDF();
 
     // Aggiungi un'immagine nella parte superiore
-    doc.addImage(base64Image, "PNG", 50, 10, 100, 40); // (x, y, width, height)
+    doc.addImage(base64Image, "PNG", 50, 10, 120, 40); // (x, y, width, height)
 
     doc.setFont("helvetica", "bold");
     doc.setFontSize(18);
@@ -118,7 +118,11 @@ function generatePDFWithImageAndText(base64Image) {
     doc.text('MACCHINA: ' + globalThis.currentRepair.type + ' ' + globalThis.currentRepair.brand + ' ' + globalThis.currentRepair.model, 10, 130);
     doc.text('ANOMALIA: ' + globalThis.currentRepair.reported_defect, 10, 140);
     doc.text('ACCESSORI: ' + globalThis.currentRepair.accessories, 10, 150);
-    doc.text('TIPO RIPARAZIONE: ' + globalThis.currentRepair.repair_type, 10, 160);
+    if(globalThis.currentRepair.repair_type == 'ESTERNA' || globalThis.currentRepair.repair_type == 'GARANZIA'){
+        doc.text('TIPO RIPARAZIONE: ' + globalThis.currentRepair.repair_type + ' | LUOGO SPECIFICO: ' + globalThis.currentRepair.specific_place, 10, 160);
+    }else{
+        doc.text('TIPO RIPARAZIONE: ' + globalThis.currentRepair.repair_type, 10, 160);
+    }
 
 
     const columnIndexes = [1, 2, 3, 4]; // Prendi solo queste colonne (parto a contare dalla colonna 0)
@@ -138,7 +142,7 @@ function generatePDFWithImageAndText(base64Image) {
 
     doc.text('TOTALE RICAMBI: ' + totalPrice + ' EURO', 10, finalY + 10);
     doc.text('MANODOPERA: ' + globalThis.currentRepair.manodopera + ' EURO', 10, finalY + 20);
-    doc.text('TOTALE +IVA: ' + parseFloat(globalThis.currentRepair.manodopera) + (parseFloat(totalPrice)) + ' EURO', 10, finalY + 30);
+    doc.text('TOTALE +IVA: ' + (Number(globalThis.currentRepair.manodopera) + Number(totalPrice)) + ' EURO', 10, finalY + 30);
     doc.text('STATO VEICOLO: ' + globalThis.currentRepair.status, 10, finalY + 40);
     if (globalThis.currentRepair.data_avviso) {
         var parts3 = globalThis.currentRepair.data_avviso.split("-");

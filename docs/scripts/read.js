@@ -11,7 +11,7 @@ function getRepairProducts() {
         const data = doc.data();
         createTableRow(data);
         if (data.product_price) {
-          totalPriceSum += parseFloat(data.product_price);
+          totalPriceSum += parseFloat(Number(data.product_price) * Number(data.quantity));
         }
       });
       displayTotalPrice(totalPriceSum);
@@ -118,4 +118,48 @@ function addPdfDetails() {
       notificate("Errore durante la modifica " + error, 'error');
     });
 
+}
+
+
+
+
+async function searchWithAlgolia() {
+  var table = document.getElementById("tutteLeRiparazioniTableBody");
+  const searchInput = document.getElementById('repair_search_input');
+  const idToken = await firebase.auth().currentUser.getIdToken();  // Ottieni il token
+  const url = `https://search-bmvzhm4mrq-uc.a.run.app/search?query=${encodeURIComponent(searchInput.value)}`;
+
+  if (searchInput.value == '') {
+    notificate('Inserisci un termine di ricerca valido');
+    getRepairsDef();
+    return;
+  }
+
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${idToken}`  // Passa il token nel header
+      }
+    });
+
+    if (!response.ok) {
+      if (response.status === 401) {
+        notificate('Non sei autorizzato a effettuare questa ricerca.');
+      } else if (response.status === 403) {
+        notificate('Accesso negato. Il tuo UID non è autorizzato.');
+      } else {
+        notificate('Errore nella richiesta');
+      }
+      throw new Error('Errore nella richiesta');
+    }
+
+    const results = await response.json();
+
+    // console.log(results);
+    createTableRows(results, 'tutteLeRiparazioniTableBody');
+
+  } catch (error) {
+    console.error('Errore durante la ricerca:', error);
+  }
 }

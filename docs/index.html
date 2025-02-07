@@ -90,12 +90,26 @@
                         <option value="FUORI USO">FUORI USO</option>
                     </select>
                 </div>
-                <div style="flex: 1; min-width: 10rem;">
+                <div style="display: flex; flex-direction: column; flex: 1; min-width: 10rem;">
                     <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Tipo riparazione</p>
-                    <select class="input1" type="date" id="repair_type2" style="width: 100%;">
+                    <select onchange="checkIfValueIsEsternaOrInGaranziaChangeRiparazione();" class="input1" type="date" id="repair_type2" style="width: 100%;">
                         <option value="INTERNA">INTERNA</option>
                         <option value="ESTERNA">ESTERNA</option>
                         <option value="GARANZIA">GARANZIA</option>
+                    </select>
+                </div>
+                <div id="change_repair_specific_place_container" style="display: none; flex-direction: column; flex: 1; min-width: 10rem;">
+                    <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Luogo specifico</p>
+                    <select id="change_repair_specific_place_selector" class="input1" type="date" style="width: 100%;">
+                        <option value="Montalto">Montalto</option>
+                        <option value="Cei">Cei</option>
+                        <option value="Scamarda">Scamarda</option>
+                        <option value="Prestigiacomo">Prestigiacomo</option>
+                        <option value="Ferrara">Ferrara</option>
+                        <option value="Salamone">Salamone</option>
+                        <option value="Orc">Orc</option>
+                        <option value="Casa madre">Casa madre</option>
+                        <option value="Altro">Altro</option>
                     </select>
                 </div>
             </div>
@@ -176,10 +190,24 @@
                 </div>
                 <div style="display: flex; flex-direction: column; flex: 1; min-width: 12rem;">
                     <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Tipo riparazione</p>
-                    <select class="input1" type="date" id="repair_type1">
+                    <select onchange="checkIfValueIsEsternaOrInGaranziaAddRiparazione();" class="input1" type="date" id="repair_type1">
                         <option value="INTERNA">INTERNA</option>
                         <option value="ESTERNA">ESTERNA</option>
                         <option value="GARANZIA">GARANZIA</option>
+                    </select>
+                </div>
+                <div id="add_repair_specific_place_container" style="display: none; flex-direction: column; flex: 1; min-width: 10rem;">
+                    <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Luogo specifico</p>
+                    <select id="add_repair_specific_place_selector" class="input1" type="date" style="width: 100%;">
+                        <option value="Montalto">Montalto</option>
+                        <option value="Cei">Cei</option>
+                        <option value="Scamarda">Scamarda</option>
+                        <option value="Prestigiacomo">Prestigiacomo</option>
+                        <option value="Ferrara">Ferrara</option>
+                        <option value="Salamone">Salamone</option>
+                        <option value="Orc">Orc</option>
+                        <option value="Casa madre">Casa madre</option>
+                        <option value="Altro">Altro</option>
                     </select>
                 </div>
             </div>
@@ -225,15 +253,17 @@
             <div style="width: 100%; height: 100%; overflow-x: hidden; overflow-y: auto;">
                 <h1 id="repair-type-display" style="margin-bottom: 0.5rem;" class="general_paragraph1">Tutte le riparazioni</h1>
                 <div style="display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
-                    <!-- SELECT CERCA PER -->
+                    <!-- RICERCA -->
                     <div class="inputGroup" style="width: 100%; max-width: 30rem; display: flex; flex-direction: row; align-items: center; margin-top: 1.3rem;">
-                        <input id="repair_search_input" type="text" style="flex: 7; height: 2.2rem; padding-left: 0.5rem; border: 1px solid transparent; outline: 1px solid transparent;" placeholder="Cerca per">
-                        <select id="repair_search_input_type" onchange="changeOrder()" style="flex: 1; height: 2.5rem; background: transparent; border: 1px solid transparent; cursor: pointer; outline: 1px solid transparent;">
+                        <input id="repair_search_input" onkeydown="if(event.key === 'Enter') {searchWithAlgolia()}" type="text" style="flex: 7; height: 2.2rem; padding-left: 0.5rem; border: 1px solid transparent; outline: 1px solid transparent;" placeholder="Cerca per parole chiave">
+                        <!--
+                        <select id="repair_search_input_type" onchange="searchAlgolia();" style="flex: 1; height: 2.5rem; background: transparent; border: 1px solid transparent; cursor: pointer; outline: 1px solid transparent;">
                             <option value="">Nome cliente</option>
                             <option value="">Modello</option>
                             <option value="">Numero di serie</option>
                         </select>
-                        <button onclick="changeOrder();" style="width: 2.5rem; height: 2.5rem; background: transparent; border: 1px solid transparent; cursor: pointer;"><i class="material-icons notranslate">search</i></button>
+                        -->
+                        <button onclick="searchWithAlgolia();" style="width: 2.5rem; height: 2.5rem; background: transparent; border: 1px solid transparent; cursor: pointer;"><i class="material-icons notranslate">search</i></button>
                     </div>
                     <!-- SELECT ORDINE -->
                     <div>
