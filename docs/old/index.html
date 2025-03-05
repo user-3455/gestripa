@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionale riparazioni</title>
+    <link rel="icon" href="res/logo.png">
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+
+<body>
+    <div id="notification1">
+        <div class="card1 crd1010" id="notification_card1"
+            style="margin-top: 5.5rem !important; margin-right: 1rem !important; box-shadow: 1px 1px #8888882d;">
+            <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+                <span id="notification_icon1" class="material-symbols-outlined notranslate general_paragraph" style="margin-top: 0rem; margin-bottom: 0rem; margin-right: .5rem;">notifications</span>
+                <p id="notification_display1" class="general_paragraph" style="margin-top: 0rem; margin-bottom: 0rem;">Carico...</p>
+            </div>
+        </div>
+    </div>
+    <div id="login">
+        <div style="width: 100%; max-width: 30rem; display: flex; flex-direction: column; align-items: center; margin-top: 4rem; margin-left: 1.5rem; margin-right: 1.5rem;">
+            <img src="res/undraw_logistics_x-4-dc.svg" style="width: 100%; max-width: 20rem;">
+                <h3 class="general_paragraph1" style="width: 100%; margin-top: 3rem;">Effettua il login per continuare</h3>
+                <input type="text" class="input1" id="login_email" placeholder="Email" style="width: 100%; padding-left: 0.8rem;">
+                <input type="text" class="input1" id="login_password" placeholder="Password" style="width: 100%; padding-left: 0.8rem; margin-top: 1rem;">
+                <button class="button1" onclick="login();" style="height: 2.5rem; margin-top: 1.5rem; width: calc(100% + 1rem);">Login</button>
+        </div>
+    </div>
+    <div id="header">
+        <span onclick="openCloseSidebar();" class="material-symbols-outlined notranslate" style="cursor: pointer; font-size: 2rem;">menu</span>
+    </div>
+   
+    <div id="master_container">
+
+
+        <div id="left_bar" style="flex-shrink: 0;">
+            <div style="width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                <img src="res/logo.png" style="width: 85%; margin-top: 1.5rem; border-radius: 0.5rem;">
+                <button onclick="showCreate(); closeSidebarMobile();" style="width: 85%; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">add</span>Nuova entrata</button>
+                <button onclick="showRepairs('TUTTE'); closeSidebarMobile();" style="width: 85%; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">clear_all</span>Tutte le riparazioni</button>
+                <button onclick="showRepairs('INTERNA'); closeSidebarMobile();" style="width: 85%; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">clear_all</span>Riparazioni interne</button>
+                <button onclick="showRepairs('ESTERNA'); closeSidebarMobile();" style="width: 85%; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">clear_all</span>Riparazioni esterne</button>
+                <button onclick="showRepairs('GARANZIA'); closeSidebarMobile();" style="width: 85%; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">clear_all</span>Riparazioni in garanzia</button>
+                <div style="flex: 1;"></div>
+                <button onclick="logout();" style="width: 85%; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem; margin-bottom: 1rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">logout</span>Disconnetti</button>
+            </div>
+
+        </div>
+
+        <div id="change_repairs" style="display: none; padding-right: 1rem;">
+            <h1 style="width: 100%; margin-bottom: 0.5rem;" class="general_paragraph1">Modifica riparazione</h1>
+            <div style="width: 100%; display: flex; flex-direction: row; justify-content: start; flex-wrap: wrap; gap: 1rem;">
+                <div style="display: flex; flex-direction: column; flex: 1; min-width: 10rem;">
+                    <p class="general_paragraph1">Cliente</p>
+                    <input class="input1" type="text" id="customer_name2">
+                </div>
+                <div style="display: flex; flex-direction: column; flex: 1; min-width: 10rem;">
+                    <p class="general_paragraph1">Cellulare</p>
+                    <input class="input1" type="text" id="customer_phone2">
+                </div>
+            </div>
+            <div style="width: 100%; display: flex; flex-direction: row; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div style="flex: 1; min-width: 10rem;">
+                    <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Data ingresso</p>
+                    <input class="input1" type="date" id="start2" style="resize: none; width: 100%;">
+                </div>
+                <div style="flex: 1; min-width: 10rem;">
+                    <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Data ritiro</p>
+                    <!--Data ritiro equivale a data riconsegna (gli ho solo cambiato nome)-->
+                    <input class="input1" type="date" id="end2" style="resize: none; width: 100%;">
+                </div>
+                <div style="flex: 1; min-width: 10rem;">
+                    <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Stato riparazione</p>
+                    <select class="input1" type="date" id="status2" style="width: 100%;">
+                        <option value="IN ENTRATA">IN ENTRATA</option>
+                        <option value="RITIRATO">RITIRATO</option>
+                        <option value="PREVENTIVO">PREVENTIVO</option>
+                        <option value="ATTESA RICAMBI">ATTESA RICAMBI</option>
+                        <option value="IN LAVORAZIONE">IN LAVORAZIONE</option>
+                        <option value="PRONTO">PRONTO</option>
+                        <option value="FUORI USO">FUORI USO</option>
+                    </select>
+                </div>
+                <div style="display: flex; flex-direction: column; flex: 1; min-width: 10rem;">
+                    <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Tipo riparazione</p>
+                    <select onchange="checkIfValueIsEsternaOrInGaranziaChangeRiparazione();" class="input1" type="date" id="repair_type2" style="width: 100%;">
+                        <option value="INTERNA">INTERNA</option>
+                        <option value="ESTERNA">ESTERNA</option>
+                        <option value="GARANZIA">GARANZIA</option>
+                    </select>
+                </div>
+                <div id="change_repair_specific_place_container" style="display: none; flex-direction: column; flex: 1; min-width: 10rem;">
+                    <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Luogo specifico</p>
+                    <select id="change_repair_specific_place_selector" class="input1" type="date" style="width: 100%;">
+                        <option value="Montalto">Montalto</option>
+                        <option value="Cei">Cei</option>
+                        <option value="Scamarda">Scamarda</option>
+                        <option value="Prestigiacomo">Prestigiacomo</option>
+                        <option value="Ferrara">Ferrara</option>
+                        <option value="Salamone">Salamone</option>
+                        <option value="Orc">Orc</option>
+                        <option value="Casa madre">Casa madre</option>
+                        <option value="Altro">Altro</option>
+                    </select>
+                </div>
+            </div>
+            <div style="width: 100%; display: flex; flex-direction: row; flex-wrap: wrap; gap: 1; flex-wrap: wrap;">
+                <div style="display: flex; flex-direction: column; flex: 1; min-width: 20rem;">
+                    <div style="display: flex; flex-direction: row; align-items: center; flex: 1; flex-wrap: wrap; gap: 1rem;">
+                        <div style="flex: 1; min-width: 10rem;">
+                            <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Tipo apparecchio</p>
+                            <input class="input1" type="text" id="type2" style="width: 100%;">
+                        </div>
+                        <div style="flex: 1; min-width: 10rem;">
+                            <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Marca</p>
+                            <input class="input1" type="text" id="brand2" style="width: 100%;">
+                        </div>
+                    </div>
+                    <p class="general_paragraph1">Accessori consegnati</p>
+                    <textarea class="input1" style="width: 100%; min-height: 5rem; border-radius: 1rem;" id="accessories2" cols="30" rows="10"></textarea>
+                    <p class="general_paragraph1">Stato generale</p>
+                    <textarea class="input1" style="width: 100%; min-height: 5rem; border-radius: 1rem;" id="status_description2" cols="30" rows="10"></textarea>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; width: 100%; gap: 1;">
+                    <div style="display: flex; flex-direction: row; align-items: center; flex-wrap: wrap; gap: 1; width: 100%;">
+                        <div style="flex: 1; min-width: 10rem;">
+                            <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Modello</p>
+                            <input class="input1" type="text" id="model2" style="width: calc(100% - 0.5rem);">
+                        </div>
+                        <div style="flex: 1; min-width: 10rem;">
+                            <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Numero di serie</p>
+                            <input class="input1" type="text" id="serial_number2" style="width: calc(100% - 0.5rem);">
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; width: 100%;">
+                        <p class="general_paragraph1">Difetto segnalato</p>
+                        <textarea class="input1" style="flex: 1; border-radius: 1rem; width: 100%;" id="reported_defect2" cols="30" rows="10"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 2rem; margin-bottom: 2rem;">
+                <button class="button1" onclick="changeRepair();" style="flex: 1;">Salva modifiche</button>
+            </div>
+        </div>
+
+        <div id="create_new" style="padding-left: 1rem; padding-right: 1rem; flex: 1;">
+            <h1 class="general_paragraph1" style="margin-bottom: 0.5rem;">Nuova entrata</h1>
+
+            <div style="width: 100%; display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap;">
+                <div style="display: flex; flex-direction: column; flex: 1;">
+                    <p class="general_paragraph1">Cliente</p>
+                    <input class="input1" type="text" id="customer_name1">
+                </div>
+                <div style="display: flex; flex-direction: column; flex: 1;">
+                    <p class="general_paragraph1">Cellulare</p>
+                    <input class="input1" type="text" id="customer_phone1">
+                </div>
+            </div>
+
+            <div style="width: 100%; display: flex; flex-direction: row; flex-wrap: wrap; gap: 1rem;">
+                <div style="display: flex; flex-direction: column; flex: 1; min-width: 12rem;">
+                    <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Data ingresso</p>
+                    <input class="input1" type="date" id="start1" style="resize: none;">
+                </div>
+                <div style="display: flex; flex-direction: column; flex: 1; min-width: 12rem;">
+                    <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Data ritiro</p>
+                    <!--Data ritiro equivale a data riconsegna (gli ho solo cambiato nome)-->
+                    <input class="input1" type="date" id="end1" style="resize: none;">
+                </div>
+                <div style="display: flex; flex-direction: column; flex: 1; min-width: 12rem;">
+                    <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Stato riparazione</p>
+                    <select class="input1" type="date" id="status1">
+                        <option value="IN ENTRATA">IN ENTRATA</option>
+                        <option value="RITIRATO">RITIRATO</option>
+                        <option value="PREVENTIVO">PREVENTIVO</option>
+                        <option value="ATTESA RICAMBI">ATTESA RICAMBI</option>
+                        <option value="IN LAVORAZIONE">IN LAVORAZIONE</option>
+                        <option value="PRONTO">PRONTO</option>
+                        <option value="FUORI USO">FUORI USO</option>
+                    </select>
+                </div>
+                <div style="display: flex; flex-direction: column; flex: 1; min-width: 12rem;">
+                    <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Tipo riparazione</p>
+                    <select onchange="checkIfValueIsEsternaOrInGaranziaAddRiparazione();" class="input1" type="date" id="repair_type1">
+                        <option value="INTERNA">INTERNA</option>
+                        <option value="ESTERNA">ESTERNA</option>
+                        <option value="GARANZIA">GARANZIA</option>
+                    </select>
+                </div>
+                <div id="add_repair_specific_place_container" style="display: none; flex-direction: column; flex: 1; min-width: 10rem;">
+                    <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Luogo specifico</p>
+                    <select id="add_repair_specific_place_selector" class="input1" type="date" style="width: 100%;">
+                        <option value="Montalto">Montalto</option>
+                        <option value="Cei">Cei</option>
+                        <option value="Scamarda">Scamarda</option>
+                        <option value="Prestigiacomo">Prestigiacomo</option>
+                        <option value="Ferrara">Ferrara</option>
+                        <option value="Salamone">Salamone</option>
+                        <option value="Orc">Orc</option>
+                        <option value="Casa madre">Casa madre</option>
+                        <option value="Altro">Altro</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="width: 100%; display: flex; flex-direction: row; margin-top: 2rem; flex-wrap: wrap; gap: 1rem;">
+                <div style="display: flex; flex-direction: column; flex: 1;">
+                    <div style="display: flex; flex-direction: row; width: 100%; flex-wrap: wrap; gap: 1rem;">
+                        <div style="display: flex; flex-direction: column; flex: 1;">
+                            <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Tipo apparecchio</p>
+                            <input class="input1" type="text" id="type1">
+                        </div>
+                        <div style="display: flex; flex-direction: column; flex: 1;">
+                            <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Marca</p>
+                            <input class="input1" type="text" id="brand1">
+                        </div>
+                    </div>
+                    <p class="general_paragraph1">Accessori consegnati</p>
+                    <textarea class="input1" style="width: 100%; flex: 1; border-radius: 1rem;" id="accessories1" cols="30" rows="10"></textarea>
+                </div>
+                <div style="display: flex; flex-direction: column; flex: 1;">
+                    <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1rem;">
+                        <div style="flex: 1; min-width: 12rem;">
+                            <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Modello</p>
+                            <input class="input1" type="text" id="model1" style="width: 100%;">
+                        </div>
+                        <div style="flex: 1; min-width: 12rem;">
+                            <p class="general_paragraph1" style="margin-bottom: 0.5rem;">Numero di serie</p>
+                            <input class="input1" type="text" id="serial_number1" style="width: 100%;">
+                        </div>
+                    </div>
+                    <div style="flex: 1;">
+                        <p class="general_paragraph1">Difetto segnalato</p>
+                        <textarea class="input1" style="width: 100%; flex: 1; border-radius: 1rem;" id="reported_defect1" cols="30" rows="10"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; margin-top: 2rem;">
+                <button class="button1" onclick="aggiungiRiparazione();" style="width: 100%;">Aggiungi</button>
+            </div>
+        </div>
+
+        <div id="tutte_le_riparazioni">
+            <div style="width: 100%; height: 100%; overflow-x: hidden; overflow-y: auto;">
+                <h1 id="repair-type-display" style="margin-bottom: 0.5rem;" class="general_paragraph1">Tutte le riparazioni</h1>
+                <div style="display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                    <!-- RICERCA -->
+                    <div class="inputGroup" style="width: 100%; max-width: 30rem; display: flex; flex-direction: row; align-items: center; margin-top: 1.3rem;">
+                        <input id="repair_search_input" onkeydown="if(event.key === 'Enter') {searchWithAlgolia()}" type="text" style="flex: 7; height: 2.2rem; padding-left: 0.5rem; border: 1px solid transparent; outline: 1px solid transparent;" placeholder="Cerca per parole chiave">
+                        <!--
+                        <select id="repair_search_input_type" onchange="searchAlgolia();" style="flex: 1; height: 2.5rem; background: transparent; border: 1px solid transparent; cursor: pointer; outline: 1px solid transparent;">
+                            <option value="">Nome cliente</option>
+                            <option value="">Modello</option>
+                            <option value="">Numero di serie</option>
+                        </select>
+                        -->
+                        <button onclick="searchWithAlgolia();" style="width: 2.5rem; height: 2.5rem; background: transparent; border: 1px solid transparent; cursor: pointer;"><i class="material-icons notranslate">search</i></button>
+                    </div>
+                    <!-- SELECT ORDINE -->
+                    <div>
+                        <h5 style="width: 95%; margin-bottom: 0.3rem; margin-top: 0rem;" class="general_paragraph1">Ordina:</h5>
+                        <div style="display: flex; flex-direction: row; align-items: start; justify-content: center; gap: 1rem;">
+                            <div style="display: flex; flex-direction: column;">
+                                <select class="input1" id="fetch-order-selector" onchange="refreshFiltersInTable();" style="height: 2.5rem;">
+                                    <option value="desc">Più recenti prima</option>
+                                    <option value="asc">Più vecchi prima</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SELECT PRIMA STATO DI -->
+                    <div style="display: flex; flex-direction: column; align-items: start; justify-content: center; margin-bottom: 1rem; min-width: 8rem;"> 
+                        <div style="width: 100%;">
+                            <h5 style="width: 95%; margin-bottom: 0.3rem; margin-top: 0rem;" class="general_paragraph1">Mostra stato:</h5>
+                            <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 1rem;">
+                                <select id="fetch-status-selector" onchange="refreshFiltersInTable();" class="input1" style="height: 2.5rem;">
+                                    <option value="TUTTI">TUTTI</option>
+                                    <option value="IN ENTRATA">IN ENTRATA</option>
+                                    <option value="RITIRATO">RITIRATO</option>
+                                    <option value="PREVENTIVO">PREVENTIVO</option>
+                                    <option value="ATTESA RICAMBI">ATTESA RICAMBI</option>
+                                    <option value="IN LAVORAZIONE">IN LAVORAZIONE</option>
+                                    <option value="PRONTO">PRONTO</option>
+                                    <option value="FUORI USO">FUORI USO</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h5 style="width: 95%; margin-bottom: 0.3rem; margin-top: 0rem;" class="general_paragraph1">N. Riparazioni da recuperare:</h5>
+                        <div class="inputGroup" style="display: flex; flex-direction: row; align-items: center;">
+                            <input id="repair_query_limit_input" onkeydown="if(event.key == 'Enter'){setGetRepairsQueryLimit();}" value="10" type="number" style="flex: 7; height: 2.2rem; padding-left: 0.5rem; border: 1px solid transparent; outline: 1px solid transparent;" placeholder="N. Riparazioni da recuperare es. 10">
+                            <button onclick="setGetRepairsQueryLimit();" style="width: 2.5rem; height: 2.5rem; background: transparent; border: 1px solid transparent; cursor: pointer;"><i class="material-icons notranslate">refresh</i></button>
+                        </div>
+                    </div>
+                    
+
+                </div>
+                <div style="overflow-x: auto; margin-right: 1rem; border-radius: 0.8rem; border-top: 1px solid rgba(0, 0, 0, 0.145); border-bottom: 1px solid rgba(0, 0, 0, 0.145);">
+                        <table class="table1" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Azioni</th>
+                                    <th>Data ingresso</th>
+                                    <th>Cliente</th>
+                                    <th>Apparecchio</th>
+                                    <th>Tipologia riparazione</th>
+                                    <th>Stato riparazione</th>
+                                    <th>Numero di serie</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tutteLeRiparazioniTableBody">
+                            </tbody>
+                        </table>
+                </div>
+                <p id="no-data-available" style="display: none; width: 100%; text-align: center;">Nessun dato corrisponde ai criteri di ricerca</p>
+                <button class="button1" onclick="getRepairsDef();" style="margin-top: 1rem; width: calc(100% - 1rem); margin-right: 1rem; margin-bottom: 1rem;">Carica altre</button>
+            </div>
+        </div>
+
+        <div id="scheda_di_lavorazione" style="display: none; padding-right: 1rem;">
+            <h1 class="general_paragraph1" style="display: flex; flex-direction: row; align-items: center; gap: 0.5rem; flex-wrap: wrap;">Scheda di lavorazione <span onclick="javascript:demoFromHTML();" class="material-symbols-outlined notranslate" style="font-size: 2.2rem; color: black; cursor: pointer;">download</span></h1>
+            <div style="width: 100%; flex-wrap: wrap; display: flex; align-items: center; justify-content: center; gap: 1rem; ; margin-top: 1rem;">
+                <input class="input1" type="text" id="input1" placeholder="QUANTITA'" style="flex: 1;">
+                <input class="input1" type="text" id="input2" placeholder="ARTICOLO" style="flex: 1;">
+                <input class="input1" type="text" id="input3" placeholder="DESCRIZIONE" style="flex: 3;">
+                <input class="input1" type="number" id="input4" placeholder="PREZZO C.UNO" style="flex: 1;">
+                <span onclick="aggiungiCelle()" class="material-symbols-outlined notranslate" style="font-size: 2.2rem; color: black; cursor: pointer;">add_circle</span>
+            </div>
+            <div style="background: rgba(0, 0, 0, 0.263); height: 1px; margin-top: 1rem; margin-bottom: 1rem; width: 100%;"><p> </p></div>
+            <h1 class="general_paragraph1" style="margin-top: 0.5rem;">Modifica il pdf</h1>
+            <div style="width: 100%; flex-wrap: wrap; display: flex; align-items: center; gap: 1rem;">
+                <input class="input1" type="number" id="input5" placeholder="MANODOPERA" style="flex: 1; margin-top: 1.2rem;">
+                <div style="display: flex; flex-direction: column; flex: 1;">
+                    <label class="general_paragraph1" for="input6">Data avviso</label>
+                    <input class="input1" style="resize: none;" type="date" id="input6">
+                </div>
+                <div style="display: flex; flex-direction: column; flex: 1;">
+                    <label class="general_paragraph1" for="inputRITIRO1">Data ritiro</label>
+                    <input class="input1" style="resize: none;" type="date" id="inputRITIRO1">
+                </div>
+                <div style="display: flex; flex-direction: column; flex: 1;">
+                <label class="general_paragraph1" for="input7">Stato attuale</label>
+                <select class="input1" type="" id="input7">
+                    <option value="IN ENTRATA">IN ENTRATA</option>
+                    <option value="RITIRATO">RITIRATO</option>
+                    <option value="PREVENTIVO">PREVENTIVO</option>
+                    <option value="ATTESA RICAMBI">ATTESA RICAMBI</option>
+                    <option value="IN LAVORAZIONE">IN LAVORAZIONE</option>
+                    <option value="PRONTO">PRONTO</option>
+                    <option value="FUORI USO">FUORI USO</option>
+                </select>
+                </div>
+                <span onclick="aggiungiDatiAlPdf();" class="material-symbols-outlined notranslate" style="font-size: 2.2rem; color: black; cursor: pointer; margin-top: 1rem;">check</span>
+            </div>
+            <div style="width: 100%; background: rgba(0, 0, 0, 0.263); height: 1px; margin-top: 1rem; margin-bottom: 1rem;"><p> </p></div>
+            <div id="customers" style="width: 100%;">
+                <h1 style="width: 100%;" class="general_paragraph1">SCHEDA DI LAVORAZIONE</h1>
+                <h3 id="customer_name_pdf1" style="width: 100%;" class="general_paragraph1">NOME CLIENTE: </h3>
+                <h3 id="customer_phone_pdf1" style="width: 100%;" class="general_paragraph1">NUMERO CLIENTE: </h3>
+                <h3 id="serial_number_pdf1" style="width: 100%;" class="general_paragraph1">NUMERO CLIENTE: </h3>
+                <h3 id="start_pdf1" style="width: 100%;" class="general_paragraph1">DATA ENTRATA: </h3>
+                <h3 id="end_pdf1" style="width: 100%;" class="general_paragraph1">DATA RITIRO: </h3>
+                <h3 id="brand_model_pdf1" style="width: 100%;" class="general_paragraph1">MARCA/MODELLO: </h3>
+                <h3 id="fault_pdf1" style="width: 100%;" class="general_paragraph1">ANOMALIA: </h3>
+                <h3 id="accessori_consegnati_pdf1" style="width: 100%;" class="general_paragraph1">ACCESSORI: </h3>
+                <h3 id="rapair_type_pdf1" style="width: 100%;" class="general_paragraph1">TIPO RIPARAZIONE: </h3>
+                <div class="table_container1" style="margin-bottom: -0.1rem; width: 100%; margin-bottom: 2rem;">
+                    <table id="pdf_table_master" class="table1" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th> </th>
+                                <th>QUANTITA'</th>
+                                <th>ARTICOLO</th>
+                                <th>DESCRIZIONE</th>
+                                <th>PREZZO C.UNO</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pdf_table1">
+                        </tbody>
+                    </table>
+                </div>
+                <h3 id="total_pdf1" style="width: 100%;" class="general_paragraph1">TOTALE RICAMBI IVA ESCLUSA: </h3>
+                <h3 id="hand_price_pdf1" style="width: 100%;" class="general_paragraph1">MANODOPERA: </h3>
+                <h3 id="total_total_price_pdf1" style="width: 100%;" class="general_paragraph1">PREZZO TOTALE CON
+                    MANODOPERA: </h3>
+                <p>-----------------------------------------------------------------------------------</p>
+                <h3 id="in_repair_veichle_status_pdf1" style="width: 100%;" class="general_paragraph1">STATO ATTUALE:
+                </h3>
+                <h3 id="data_avviso_pdf1" style="width: 100%;" class="general_paragraph1">AVVISATO IL: </h3>
+
+            </div>
+        </div>
+
+        <div id="change-element1" style="width: 100%; height: 100%; display: none; flex-direction: column; align-items: center; justify-content: center; overflow-y: auto; overflow-x: hidden; position: absolute; z-index: 9999999999; background: rgba(0, 0, 0, 0.356);">
+            <div class="card1" style="width: 100%; max-width: 50rem; background: white; border-radius: 1rem; border: 1px solid  rgba(0, 0, 0, 0.323); padding-bottom: 1rem;">
+                <h1 style="display: flex; flex-direction: row; align-items: center; margin-left: 1rem;" class="general_paragraph1">Modifica elemento
+                    <div style="flex: 1;"></div>
+                    <span style="cursor: pointer; margin-right: 1.5rem;" onclick="document.getElementById('change-element1').style.display = 'none'; " class="material-symbols-outlined">close</span>
+                </h1>
+                <div style="flex-wrap: wrap; display: flex; align-items: center; gap: 1rem; margin-top: 1rem; padding-left: 1rem; padding-right: 1rem;">
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <p style="margin-bottom: 0.5rem;">Quantità</p>
+                        <input class="input1" type="text" id="change-input1" placeholder="QUANTITA'">
+                    </div>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <p style="margin-bottom: 0.5rem;">Articolo</p>
+                        <input class="input1" type="text" id="change-input2" placeholder="ARTICOLO">
+                    </div>
+                    <div style="display: flex; flex-direction: column; flex: 3;">
+                        <p style="margin-bottom: 0.5rem;">Descrizione</p>
+                        <input class="input1" type="text" id="change-input3" placeholder="DESCRIZIONE">
+                    </div>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <p style="margin-bottom: 0.5rem;">Prezzo C.Uno</p>
+                        <input class="input1" type="number" id="change-input4" placeholder="PREZZO C.UNO">
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center; margin-top: 1rem; margin-left: 1rem; margin-right: 1rem;">
+                    <button class="button1" onclick="saveElementChanges1()" style="flex: 1;">Applica</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- UNDER_BAR (HEADER) -->
+    <div id="under_bar" style="display: flex;">
+        <button onclick="showRepairs('TUTTE');" class="under_bar_button1"><span class="material-symbols-outlined notranslate" style="font-size: 30px;">home</span>Tutte</button>
+        <button onclick="showRepairs('INTERNA');" class="under_bar_button1"><span class="material-symbols-outlined notranslate" style="font-size: 30px;">store</span>Interne</button>
+        <button onclick="showCreate();" class="under_bar_button1"><span class="material-symbols-outlined notranslate" style="font-size: 30px;">add_circle</span>Aggiungi</button>
+        <button onclick="showRepairs('ESTERNA');" class="under_bar_button1"><span class="material-symbols-outlined notranslate" style="font-size: 30px;">display_external_input</span>Esterne</button>
+        <button onclick="showRepairs('GARANZIA');" class="under_bar_button1"><span class="material-symbols-outlined notranslate" style="font-size: 30px;">workspace_premium</span>Garanzia</button>
+    </div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+
+    <script src="scripts/def.js"></script>
+    <script src="scripts/script.js"></script>
+    <script src="scripts/firebase.js"></script>
+    <script src="scripts/pdf.js"></script>
+    <script src="scripts/read.js"></script>
+    <script src="scripts/actions.js"></script>
+</body>
+
+</html>

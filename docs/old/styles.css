@@ -1,0 +1,318 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    overflow-y: hidden;
+    overflow-x: hidden;
+    font-family: 'Inter Tight';
+}
+
+input{
+    font-family: 'Inter Tight';
+}
+
+select{
+    font-family: 'Inter Tight';
+}
+
+
+#master_container {
+    display: none;
+    flex-direction: row;
+    width: 100%;
+    height: calc(100% - 4rem);
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+#header {
+    height: 4rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.323);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+
+#left_bar {
+    display: flex;
+    background: rgb(255, 255, 255);
+    width: 17em;
+    height: 100%;
+    border-right: 1px solid rgba(0, 0, 0, 0.323);
+    flex-direction: column;
+    padding-bottom: 1.5rem;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#under_bar {
+    display: none;
+}
+
+.button1 {
+    background: transparent;
+    font-size: 0.9rem;
+    height: 2.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.323);
+    border-radius: 0.5rem;
+    color: black;
+    cursor: pointer;
+    font-family: 'Inter Tight';
+    transition: 0.1s ease-in background;
+}
+
+.button1:hover {
+    background: rgba(0, 0, 0, 0.104);
+    transition: 0.1s ease-in background;
+}
+
+.general_paragraph1 {
+    color: black;
+    font-family: 'Inter Tight';
+}
+
+.input1 {
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.323);
+    height: 2.5rem;
+    resize: vertical;
+    background: rgba(255, 255, 255, 0.244);
+}
+
+#riparazioni_in_garanzia {
+    padding-left: 1rem;
+    flex: 1;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#riparazioni_interne {
+    padding-left: 1rem;
+    flex: 1;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#riparazioni_esterne {
+    padding-left: 1rem;
+    flex: 1;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#tutte_le_riparazioni {
+    padding-left: 1rem;
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#change_repairs {
+    padding-left: 1rem;
+    flex: 1;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+#create_new {
+    padding-left: 1rem;
+    flex: 1;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#scheda_di_lavorazione {
+    padding-left: 1rem;
+    flex: 1;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#change_repairs {
+    padding-left: 1rem;
+    flex: 1;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#login {
+    display: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 9999;
+    background: rgb(255, 255, 255);
+}
+
+.inputGroup{
+    border: 1px solid rgba(0, 0, 0, 0.249);
+    border-radius: 0.5rem;
+    height: 2.5rem;
+    overflow: hidden;
+}
+
+.table1 {
+    border-collapse: collapse;
+    border-radius: 10px;
+    font-family: 'Inter Tight';
+    text-align: start;
+}
+
+.table1 th{
+    height: 2.5rem;
+    text-align: start;
+    padding-left: 0.5rem;
+}
+
+
+.table1 td {
+    text-align: left;
+    padding: 8px;
+    color: black;
+    text-align: start;
+}
+
+.table1 tr {
+    border-left: 1px solid rgba(0, 0, 0, 0.323);
+    border-right: 1px solid rgba(0, 0, 0, 0.323);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.323);
+}
+
+.table1 tr:hover {
+    background: rgba(0, 0, 0, 0.042);
+}
+
+.description_table_section {
+    max-width: 10rem;
+    overflow-x: auto;
+}
+
+#notification1 {
+    display: none;
+    pointer-events: none;
+    position: fixed;
+    z-index: 999999999999;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: start;
+    align-items: end;
+    overflow-y: auto;
+}
+
+.crd1010 {
+    background: white;
+    padding: 1rem;
+    font-family: 'Inter Tight';
+}
+
+.task_actions_button1 {
+    color: rgb(40, 39, 39);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.323);
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    cursor: pointer;
+}
+
+.task_actions_button1:hover {
+    background-color: rgba(0, 0, 0, 0.208);
+}
+
+@media screen and (min-width: 1000px) {
+    #left_bar {
+        display: flex;
+    }
+}
+
+
+@media screen and (max-width: 999px) {
+
+    .resp_div40 {
+        flex-direction: column !important;
+    }
+
+    .card1 {
+        border-radius: 1rem;
+    }
+
+    .resp_div2 {
+        width: 95% !important;
+    }
+
+    #left_bar {
+        display: none !important;
+        position: absolute;
+        z-index: 9999;
+        height: calc(100% - 4rem);
+    }
+
+    #header{
+        display: none;
+    }
+
+    #under_bar {
+        display: flex;
+        color: black;
+        width: 100%;
+        height: 4rem;
+        margin-top: 0rem;
+        margin-bottom: 1rem;
+        background: rgba(255, 255, 255, 0.664);
+        border-top: 1px solid rgba(0, 0, 0, 0.194);
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .under_bar_button1 {
+        color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: 1px solid transparent;
+        height: 90%;
+    }
+}
