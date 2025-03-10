@@ -127,7 +127,7 @@ async function searchWithAlgolia() {
   var table = document.getElementById("tutteLeRiparazioniTableBody");
   const searchInput = document.getElementById('repair_search_input');
   const idToken = await firebase.auth().currentUser.getIdToken();  // Ottieni il token
-  const url = `https://search-bmvzhm4mrq-uc.a.run.app/search?query=${encodeURIComponent(searchInput.value)}`;
+  const url = `https://us-central1-app1-723bd.cloudfunctions.net/searchRepairs?q=${encodeURIComponent(searchInput.value)}`;
 
   if (searchInput.value == '') {
     notificate('Inserisci un termine di ricerca valido');
