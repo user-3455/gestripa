@@ -1,11 +1,14 @@
 function getRepairProducts() {
   var table = document.getElementById("pdf_table1");
   const db = firebase.firestore();
-  const userTasksRef = db.collection('repairs').doc(globalThis.currentRepair.id).collection('products');
 
+  console.log(globalThis.currentRepair.objectID)
+  console.log(globalThis.currentRepair.id)
+
+  let query = db.collection('repairs').doc(globalThis.currentRepair.id).collection('products');
   let totalPriceSum = 0;
 
-  userTasksRef.get()
+  query.get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const data = doc.data();
@@ -65,11 +68,10 @@ function getRepairProducts() {
 
 }
 
+//TORNA QUI
 function displayTotalPrice(totalPrice) {
-
-  const db = firebase.firestore();
-  const repairDocRef = db.collection('repairs').doc(globalThis.currentRepair.id);
-  repairDocRef.get()
+  console.log(globalThis.currentRepair.id)
+  firebase.firestore().collection('repairs').doc(globalThis.currentRepair.id).get()
     .then((doc) => {
       if (doc.exists) {
         globalThis.currentRepair = doc.data();
@@ -78,6 +80,7 @@ function displayTotalPrice(totalPrice) {
       }
     })
     .catch((error) => {
+      console.log('Impossibile mostrare correttamente i dati nel pdf' + error);
       alert('Impossibile mostrare correttamente i dati nel pdf' + error);
     });
 
@@ -153,11 +156,23 @@ async function searchWithAlgolia() {
       }
       throw new Error('Errore nella richiesta');
     }
+    
 
     const results = await response.json();
 
+    /* 
+    Rinomina objectID in id per ogni oggetto nell'array poichè 
+    Algolia includeva nell'object (ovvero ogni documento Firestore recuperato) 
+    un tag chiamato objectID che includeva l'id del documento 
+    */
+    const renamedResults = results.map(obj => ({
+        ...obj,
+        id: obj.objectID,  // Copia objectID in id
+        objectID: undefined // Opzionale: Rimuove objectID
+    }));
+
     // console.log(results);
-    createTableRows(results, 'tutteLeRiparazioniTableBody');
+    createTableRows(renamedResults, 'tutteLeRiparazioniTableBody');
 
   } catch (error) {
     console.error('Errore durante la ricerca:', error);

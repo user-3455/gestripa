@@ -60,11 +60,11 @@ function getRepairsDef() {
             lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
 
             querySnapshot.forEach((doc) => {
-                const data = doc.data();
+                const data = { ...doc.data(), id: doc.id }; // Clona per sicurezza
+                console.log(data); // Controlla il formato PRIMA di passarlo a una funzione
                 allRepairs.push(data);
-                createTableRows(allRepairs, 'tutteLeRiparazioniTableBody');
             });
-
+            createTableRows(allRepairs, 'tutteLeRiparazioniTableBody');
 
             // console.log("Tutti i dati finora:", allRepairs);
         })
@@ -143,7 +143,7 @@ function createTableRows(dataArray, tableId) {
         var descriptionButton = document.createElement("button");
         descriptionButton.className = "task_actions_button1";
         descriptionButton.innerHTML = "<i class='material-icons notranslate'>description</i>";
-        descriptionButton.onclick = function () {
+        descriptionButton.onclick = () => {
             showSchedaDiRiparazione(data);
         };
         cell0.appendChild(descriptionButton);

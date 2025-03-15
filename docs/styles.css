@@ -59,8 +59,8 @@ select{
     background: transparent;
     font-size: 0.9rem;
     height: 2.5rem;
-    border: 1px solid rgba(0, 0, 0, 0.323);
     border-radius: 0.5rem;
+    border: 1px solid transparent;
     color: black;
     cursor: pointer;
     font-family: 'Inter Tight';
@@ -69,6 +69,7 @@ select{
 
 .button1:hover {
     background: rgba(0, 0, 0, 0.104);
+    border: 1px solid rgba(0, 0, 0, 0.034);
     transition: 0.1s ease-in background;
 }
 

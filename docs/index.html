@@ -43,15 +43,15 @@
 
 
         <div id="left_bar" style="flex-shrink: 0;">
-            <div style="width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
-                <img src="res/logo.png" style="width: 85%; margin-top: 1.5rem; border-radius: 0.5rem;">
-                <button onclick="showCreate(); closeSidebarMobile();" style="width: 85%; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">add</span>Nuova entrata</button>
-                <button onclick="showRepairs('TUTTE'); closeSidebarMobile();" style="width: 85%; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">clear_all</span>Tutte le riparazioni</button>
-                <button onclick="showRepairs('INTERNA'); closeSidebarMobile();" style="width: 85%; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">clear_all</span>Riparazioni interne</button>
-                <button onclick="showRepairs('ESTERNA'); closeSidebarMobile();" style="width: 85%; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">clear_all</span>Riparazioni esterne</button>
-                <button onclick="showRepairs('GARANZIA'); closeSidebarMobile();" style="width: 85%; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">clear_all</span>Riparazioni in garanzia</button>
+            <div style="width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden; display: flex; flex-direction: column; gap: 0.3rem;">
+                <img src="res/logo.png" style="width: 100%; margin-top: 1.5rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                <button onclick="showCreate(); closeSidebarMobile();" style="margin-left: 1rem; margin-right: 1rem; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">add</span>Nuova entrata</button>
+                <button onclick="showRepairs('TUTTE'); closeSidebarMobile();" style="margin-left: 1rem; margin-right: 1rem; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">clear_all</span>Tutte le riparazioni</button>
+                <button onclick="showRepairs('INTERNA'); closeSidebarMobile();" style="margin-left: 1rem; margin-right: 1rem; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">clear_all</span>Riparazioni interne</button>
+                <button onclick="showRepairs('ESTERNA'); closeSidebarMobile();" style="margin-left: 1rem; margin-right: 1rem; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">clear_all</span>Riparazioni esterne</button>
+                <button onclick="showRepairs('GARANZIA'); closeSidebarMobile();" style="margin-left: 1rem; margin-right: 1rem; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">clear_all</span>Riparazioni in garanzia</button>
                 <div style="flex: 1;"></div>
-                <button onclick="logout();" style="width: 85%; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem; margin-bottom: 1rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">logout</span>Disconnetti</button>
+                <button onclick="logout();" style="margin-left: 1rem; margin-right: 1rem; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; padding-left: 0.8rem; margin-bottom: 1rem;" class="button1"><span class="material-symbols-outlined notranslate" style="font-size: 1.8rem; color: #313131;">logout</span>Disconnetti</button>
             </div>
 
         </div>
@@ -307,7 +307,7 @@
 
                 </div>
                 <div style="overflow-x: auto; margin-right: 1rem; border-radius: 0.8rem; border-top: 1px solid rgba(0, 0, 0, 0.145); border-bottom: 1px solid rgba(0, 0, 0, 0.145);">
-                        <table class="table1" style="width: 100%;">
+                        <table class="table1 notranslate" style="width: 100%;">
                             <thead>
                                 <tr>
                                     <th>Azioni</th>
