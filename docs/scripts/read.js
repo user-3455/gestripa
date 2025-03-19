@@ -73,7 +73,7 @@ function displayTotalPrice(totalPrice) {
   console.log(globalThis.currentRepair.id)
   firebase.firestore().collection('repairs').doc(globalThis.currentRepair.id).get()
     .then((doc) => {
-      if (doc.exists) {
+      if (doc) {
         globalThis.currentRepair = doc.data();
       } else {
         alert('Impossibile mostrare correttamente i dati nel pdf');
@@ -168,8 +168,9 @@ async function searchWithAlgolia() {
     const renamedResults = results.map(obj => ({
         ...obj,
         id: obj.objectID,  // Copia objectID in id
-        objectID: undefined // Opzionale: Rimuove objectID
     }));
+
+    console.log(renamedResults)
 
     // console.log(results);
     createTableRows(renamedResults, 'tutteLeRiparazioniTableBody');

@@ -61,7 +61,7 @@ function getRepairsDef() {
 
             querySnapshot.forEach((doc) => {
                 const data = { ...doc.data(), id: doc.id }; // Clona per sicurezza
-                console.log(data); // Controlla il formato PRIMA di passarlo a una funzione
+                // console.log(data); // Controlla il formato PRIMA di passarlo a una funzione
                 allRepairs.push(data);
             });
             createTableRows(allRepairs, 'tutteLeRiparazioniTableBody');
@@ -144,6 +144,7 @@ function createTableRows(dataArray, tableId) {
         descriptionButton.className = "task_actions_button1";
         descriptionButton.innerHTML = "<i class='material-icons notranslate'>description</i>";
         descriptionButton.onclick = () => {
+            globalThis.currentRepair = data;
             showSchedaDiRiparazione(data);
         };
         cell0.appendChild(descriptionButton);
