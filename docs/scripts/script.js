@@ -102,12 +102,25 @@ function showSchedaDiRiparazione(data) {
   document.getElementById('brand_model_pdf1').innerText = 'MACCHINA: ' + data.type + ' ' + data.brand + ' ' + data.model;
   document.getElementById('fault_pdf1').innerText = 'ANOMALIA: ' + data.reported_defect;
   document.getElementById('accessori_consegnati_pdf1').innerText = 'ACCESSORI: ' + data.accessories;
-  document.getElementById('rapair_type_pdf1').innerText = 'TIPO RIPARAZIONE: ' + data.repair_type;
+
+
   if(data.repair_type == 'ESTERNA' || data.repair_type == 'GARANZIA'){
-    document.getElementById('rapair_type_pdf1').innerText = 'TIPO RIPARAZIONE: ' + data.repair_type + ' | LUOGO SPECIFICO: ' + globalThis.currentRepair.specific_place;
+    document.getElementById('luogo_specifico_pdf1_container').style.display = 'flex';
   }else{
-    document.getElementById('rapair_type_pdf1').innerText = 'TIPO RIPARAZIONE: ' + data.repair_type;
+    document.getElementById('luogo_specifico_pdf1_container').style.display = 'none';
   }
+
+  document.getElementById('repair_type_pdf1').value = data.repair_type;
+  document.getElementById('luogo_specifico_pdf1').value = globalThis.currentRepair.specific_place;
+
+  /* OLD CODE TIPO RIPARAZIONE
+    document.getElementById('repair_type_pdf1').innerText = 'TIPO RIPARAZIONE: ' + data.repair_type;
+    if(data.repair_type == 'ESTERNA' || data.repair_type == 'GARANZIA'){
+      document.getElementById('repair_type_pdf1').innerText = 'TIPO RIPARAZIONE: ' + data.repair_type + ' | LUOGO SPECIFICO: ' + globalThis.currentRepair.specific_place;
+    }else{
+      document.getElementById('repair_type_pdf1').innerText = 'TIPO RIPARAZIONE: ' + data.repair_type;
+    }
+  */
 
   document.getElementById('create_new').style.display = 'none';
   document.getElementById('change_repairs').style.display = 'none';
@@ -196,5 +209,14 @@ function checkIfValueIsEsternaOrInGaranziaChangeRiparazione(){
     repairSpecificPlaceSelectorContainer.style.display = 'flex';
   }else{
     repairSpecificPlaceSelectorContainer.style.display = 'none';
+  }
+}
+
+function hideOrShowLuogoSpecificoSchedaDiRiparazione(){
+  const repairTypeSelect = document.getElementById('repair_type_pdf1');
+  if(repairTypeSelect.value == 'ESTERNA' || repairTypeSelect.value == 'GARANZIA'){
+    document.getElementById('luogo_specifico_pdf1_container').style.display = 'flex';
+  }else{
+    document.getElementById('luogo_specifico_pdf1_container').style.display = 'none';
   }
 }

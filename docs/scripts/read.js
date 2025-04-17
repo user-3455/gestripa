@@ -84,10 +84,10 @@ function displayTotalPrice(totalPrice) {
       alert('Impossibile mostrare correttamente i dati nel pdf' + error);
     });
 
-  document.getElementById('total_pdf1').innerText = 'TOTALE RICAMBI: ' + totalPrice + ' EURO';
+  document.getElementById('total_pdf1').innerText = 'TOTALE RICAMBI: ' + troncaA2Decimali(totalPrice) + ' EURO+IVA';
   document.getElementById('hand_price_pdf1').innerText = 'MANODOPERA: ' + globalThis.currentRepair.manodopera + ' EURO';
   var result1 = parseFloat(globalThis.currentRepair.manodopera) + (parseFloat(totalPrice));
-  document.getElementById('total_total_price_pdf1').innerText = 'TOTALE +IVA: ' + result1 + ' EURO';
+  document.getElementById('total_total_price_pdf1').innerText = 'TOTALE: ' + result1 + ' EURO+IVA';
   if (globalThis.currentRepair.data_avviso) {
     var parts3 = globalThis.currentRepair.data_avviso.split("-");
     var converted3 = parts3[2] + "-" + parts3[1] + "-" + parts3[0];

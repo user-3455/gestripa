@@ -373,8 +373,36 @@
                 <h3 id="end_pdf1" style="width: 100%;" class="general_paragraph1">DATA RITIRO: </h3>
                 <h3 id="brand_model_pdf1" style="width: 100%;" class="general_paragraph1">MARCA/MODELLO: </h3>
                 <h3 id="fault_pdf1" style="width: 100%;" class="general_paragraph1">ANOMALIA: </h3>
-                <h3 id="accessori_consegnati_pdf1" style="width: 100%;" class="general_paragraph1">ACCESSORI: </h3>
-                <h3 id="rapair_type_pdf1" style="width: 100%;" class="general_paragraph1">TIPO RIPARAZIONE: </h3>
+                <h3 id="accessori_consegnati_pdf1" style="width: 100%; margin-bottom: 0rem;" class="general_paragraph1">ACCESSORI: </h3>
+                
+                <div style="width: 100%; display: flex; flex-direction: row; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                    <h3 class="general_paragraph1">TIPO RIPARAZIONE: </h3>
+                    <div style="display: flex; flex-direction: column;">
+                        <select onchange="hideOrShowLuogoSpecificoSchedaDiRiparazione();" id="repair_type_pdf1" class="input1" type="date">
+                            <option value="INTERNA">INTERNA</option>
+                            <option value="ESTERNA">ESTERNA</option>
+                            <option value="GARANZIA">GARANZIA</option>
+                        </select>
+                    </div>
+                    <div id="luogo_specifico_pdf1_container" style="display: none; flex-direction: row; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                        <h3 class="general_paragraph1">LUOGO SPECIFICO: </h3>
+                        <select id="luogo_specifico_pdf1" class="input1" type="date">
+                            <option value="Montalto">Montalto</option>
+                            <option value="Cei">Cei</option>
+                            <option value="Scamarda">Scamarda</option>
+                            <option value="Prestigiacomo">Prestigiacomo</option>
+                            <option value="Ferrara">Ferrara</option>
+                            <option value="Salamone">Salamone</option>
+                            <option value="Orc">Orc</option>
+                            <option value="Casa madre">Casa madre</option>
+                            <option value="Altro">Altro</option>
+                        </select>
+                    </div>
+                    <span onclick="saveTipoRiparazioneLuogoSpecifico();" class="material-symbols-outlined notranslate" style="font-size: 2.2rem; color: black; cursor: pointer;">check</span>
+                </div>
+
+
+
                 <div class="table_container1" style="margin-bottom: -0.1rem; width: 100%; margin-bottom: 2rem;">
                     <table id="pdf_table_master" class="table1" style="width: 100%;">
                         <thead>

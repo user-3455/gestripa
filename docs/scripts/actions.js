@@ -334,10 +334,10 @@ function aggiungiDatiAlPdf() {
     .then(() => {
       const totalPrice = globalThis.totalPrice;
       if (document.getElementById('input5').value !== '') {
-        document.getElementById('total_pdf1').innerText = 'TOTALE RICAMBI: ' + totalPrice + ' EURO';
+        document.getElementById('total_pdf1').innerText = 'TOTALE RICAMBI: ' + troncaA2Decimali(totalPrice) + ' EURO+IVA';
         document.getElementById('hand_price_pdf1').innerText = 'MANODOPERA: ' + manodopera.value + ' EURO';
         var result1 = parseFloat(manodopera.value) + (parseFloat(totalPrice));
-        document.getElementById('total_total_price_pdf1').innerText = 'TOTALE + IVA: ' + result1 + ' EURO';
+        document.getElementById('total_total_price_pdf1').innerText = 'TOTALE: ' + result1 + ' EURO+IVA';
       }
       if (document.getElementById('input6').value !== '') {
         var parts1 = data_avviso.value.split("-");
@@ -364,4 +364,30 @@ function aggiungiDatiAlPdf() {
     .catch((error) => {
       notificate("Errore durante l'aggiunta dei dati al pdf: " + error, 'error');
     });
+}
+
+
+function troncaA2Decimali(numero) {
+  const arrotondato = Math.ceil(numero * 100) / 100;
+  return arrotondato.toFixed(2);
+}
+
+function saveTipoRiparazioneLuogoSpecifico() {
+  const repairTypeSchedaDiRiparazioneInput = document.getElementById('repair_type_pdf1');
+  const specificPlaceSchedaDiRiparazioneInput = document.getElementById('luogo_specifico_pdf1');
+
+  if (confirm('Confermare il salvataggio?')) {
+    firebase.firestore().collection('repairs').doc(globalThis.currentRepair.id)
+      .set({
+        repair_type: repairTypeSchedaDiRiparazioneInput.value,
+        specific_place: specificPlaceSchedaDiRiparazioneInput.value,
+      }, { merge: true })
+      .then(() => {
+        notificate("Salvataggio effettuato con successo");
+      })
+      .catch((error) => {
+        notificate("Errore durante il salvataggio: " + error, 'error');
+        console.error("Errore durante il salvataggio:", error);
+      });
+  }
 }
