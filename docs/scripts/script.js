@@ -1,4 +1,4 @@
-// RESET GENERALE VARIABILI
+// Imposto di base il tipo di riparazione su "TUTTE"
 globalThis.repairType = 'TUTTE';
 
 
@@ -17,7 +17,6 @@ function closeSidebarMobile() {
     sidebar.style.display = 'none';
   }
 }
-
 
 function getLastSerialNumber() {
   const serialNumberInput = document.getElementById('serial_number1');
@@ -82,7 +81,6 @@ function showRepairs(type) {
   getRepairsDef()
 }
 
-
 function showSchedaDiRiparazione(data) {
   globalThis.currentRepair = data;
   getRepairProducts();
@@ -109,8 +107,14 @@ function showSchedaDiRiparazione(data) {
   }else{
     document.getElementById('luogo_specifico_pdf1_container').style.display = 'none';
   }
+  if(data.repair_type == 'INTERNA' || data.repair_type == 'ESTERNA'){
+    document.getElementById('data_specifica_pdf1_container').style.display = 'flex';
+  }else{
+    document.getElementById('data_specifica_pdf1_container').style.display = 'none';
+  }
 
   document.getElementById('repair_type_pdf1').value = data.repair_type;
+  document.getElementById('data_specifica_pdf1').value = globalThis.currentRepair.specific_date;  
   document.getElementById('luogo_specifico_pdf1').value = globalThis.currentRepair.specific_place;
 
   /* OLD CODE TIPO RIPARAZIONE
@@ -160,10 +164,7 @@ function notificate(message, type) {
   }, 5000);
 }
 
-
-
-
-
+// ANIMAZIONI
 function animate1(htmlId) {
   const masterDurationDef = 200;
   var mioElemento = document.getElementById(htmlId);
@@ -189,7 +190,7 @@ function animate1(htmlId) {
   });
 }
 
-
+// HIDE OR SHOW ELEMENTI IN BASE A VALORI DI SELECT O INPUT
 function checkIfValueIsEsternaOrInGaranziaAddRiparazione(){
   const repairTypeSelector = document.getElementById('repair_type1');
   const repairSpecificPlaceSelectorContainer = document.getElementById('add_repair_specific_place_container');
@@ -200,7 +201,6 @@ function checkIfValueIsEsternaOrInGaranziaAddRiparazione(){
     repairSpecificPlaceSelectorContainer.style.display = 'none';
   }
 }
-
 function checkIfValueIsEsternaOrInGaranziaChangeRiparazione(){
   const repairTypeSelector = document.getElementById('repair_type2');
   const repairSpecificPlaceSelectorContainer = document.getElementById('change_repair_specific_place_container');
@@ -211,12 +211,17 @@ function checkIfValueIsEsternaOrInGaranziaChangeRiparazione(){
     repairSpecificPlaceSelectorContainer.style.display = 'none';
   }
 }
-
 function hideOrShowLuogoSpecificoSchedaDiRiparazione(){
   const repairTypeSelect = document.getElementById('repair_type_pdf1');
   if(repairTypeSelect.value == 'ESTERNA' || repairTypeSelect.value == 'GARANZIA'){
     document.getElementById('luogo_specifico_pdf1_container').style.display = 'flex';
   }else{
     document.getElementById('luogo_specifico_pdf1_container').style.display = 'none';
+  }
+
+  if(repairTypeSelect.value == 'INTERNA' || repairTypeSelect.value == 'ESTERNA'){
+    document.getElementById('data_specifica_pdf1_container').style.display = 'flex';
+  }else{
+    document.getElementById('data_specifica_pdf1_container').style.display = 'none';
   }
 }

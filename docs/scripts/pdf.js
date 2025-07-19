@@ -141,7 +141,8 @@ function generatePDFWithImageAndText(base64Image) {
     // Recupera la posizione finale della tabella
     const finalY = doc.lastAutoTable.finalY;
 
-    doc.text('TOTALE RICAMBI: ' + troncaA2Decimali(totalPrice) + ' EURO+IVA', 10, finalY + 10);
+    // +IVA
+    doc.text('TOTALE RICAMBI: ' + troncaA2Decimali(totalPrice) + ' EURO', 10, finalY + 10);
     doc.text('MANODOPERA: ' + globalThis.currentRepair.manodopera + ' EURO', 10, finalY + 20);
     doc.text('TOTALE: ' + (Number(globalThis.currentRepair.manodopera) + Number(totalPrice)) + ' EURO+IVA', 10, finalY + 30);
     doc.text('STATO VEICOLO: ' + globalThis.currentRepair.status, 10, finalY + 40);

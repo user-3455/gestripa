@@ -1,3 +1,4 @@
+// Aggiunge una nuova riparazione al DB
 function aggiungiRiparazione() {
   if (document.getElementById('start1').value !== '') {
 
@@ -59,7 +60,7 @@ function aggiungiRiparazione() {
     notificate('Si prega di inserire una data di ingresso valida', 'error');
   }
 }
-
+// Aggiorna l'ultimo numero seriale delle riparazioni, incrementandolo di +1
 function updateLastSerialNumber() {
   const docRef = firebase.firestore().collection("sys").doc("counters");
 
@@ -82,9 +83,7 @@ function updateLastSerialNumber() {
       console.error("Errore durante l'aggiornamento del documento:", error);
     });
 }
-
-
-
+// Salva le modifiche apportate a un prodotto (qui chiamato anche elemento) di una riparazione
 function saveElementChanges1() {
   var docRef = firebase.firestore().collection("repairs").doc(globalThis.currentRepair.id).collection('products').doc(globalThis.currentRepairElement.id);
 
@@ -103,9 +102,7 @@ function saveElementChanges1() {
       console.error("Errore nell'aggiornamento dell'elemento: ", error);
     });
 }
-
-
-
+// Elimina una specifica riparazione attraverso l'argomento della funzione
 function deleteRepair(data) {
   var conferma = confirm("Sei sicuro di voler eliminare la riparazione?");
   if (conferma) {
@@ -121,7 +118,7 @@ function deleteRepair(data) {
       });
   }
 }
-
+// Elimina uno specifico prodotto della riparazione attraverso l'argomento della funzione
 function deleteRepairProduct(data) {
   var conferma = confirm("Sei sicuro di voler eliminare questo elemento?");
   if (conferma) {
@@ -137,15 +134,11 @@ function deleteRepairProduct(data) {
       });
   }
 }
-
-
+//
 function getRepairDataToFill(data) {
   globalThis.currentRepair = data;
   showChangeRepair();
 
-  var start = document.getElementById('start2');
-  var end = document.getElementById('end2');
-  var status = document.getElementById('status2');
   var type = document.getElementById('type2');
   var brand = document.getElementById('brand2');
   var model = document.getElementById('model2');
@@ -205,9 +198,7 @@ function getRepairDataToFill(data) {
   }
 
 }
-
-
-
+// Aggiorna i dati della riparazione corrente
 function changeRepair() {
   const path = firebase.firestore().collection('repairs').doc(globalThis.currentRepair.id);
 
@@ -239,9 +230,7 @@ function changeRepair() {
       notificate("Errore durante la modifica della riparazione: " + error, 'error');
     });
 }
-
-
-
+// Aggiungi un nuovo prodotto alla riparazione corrente
 function aggiungiCelle() {
   if (document.getElementById('input1').value !== '') {
     if (document.getElementById('input2').value !== '') {
@@ -291,8 +280,7 @@ function aggiungiCelle() {
     notificate('Si prega di inserire una quantità valida', 'error');
   }
 }
-
-
+// Aggiunge nuovi dati al pdf (e anche al DB contemporaneamente)
 function aggiungiDatiAlPdf() {
   var manodopera = document.getElementById('input5');
   var data_avviso = document.getElementById('input6');
@@ -334,7 +322,8 @@ function aggiungiDatiAlPdf() {
     .then(() => {
       const totalPrice = globalThis.totalPrice;
       if (document.getElementById('input5').value !== '') {
-        document.getElementById('total_pdf1').innerText = 'TOTALE RICAMBI: ' + troncaA2Decimali(totalPrice) + ' EURO+IVA';
+        // +IVA
+        document.getElementById('total_pdf1').innerText = 'TOTALE RICAMBI: ' + troncaA2Decimali(totalPrice) + ' EURO';
         document.getElementById('hand_price_pdf1').innerText = 'MANODOPERA: ' + manodopera.value + ' EURO';
         var result1 = parseFloat(manodopera.value) + (parseFloat(totalPrice));
         document.getElementById('total_total_price_pdf1').innerText = 'TOTALE: ' + result1 + ' EURO+IVA';
@@ -365,22 +354,23 @@ function aggiungiDatiAlPdf() {
       notificate("Errore durante l'aggiunta dei dati al pdf: " + error, 'error');
     });
 }
-
-
+// Tronca a 2 decimali un numero fornito attraverso l'argomento della funzione
 function troncaA2Decimali(numero) {
   const arrotondato = Math.ceil(numero * 100) / 100;
   return arrotondato.toFixed(2);
 }
-
+// Salva il tipo di riparazione e il luogo specifico della riparazione
 function saveTipoRiparazioneLuogoSpecifico() {
   const repairTypeSchedaDiRiparazioneInput = document.getElementById('repair_type_pdf1');
   const specificPlaceSchedaDiRiparazioneInput = document.getElementById('luogo_specifico_pdf1');
+  const specificDateSchedaDiRiparazioneInput = document.getElementById('data_specifica_pdf1');
 
   if (confirm('Confermare il salvataggio?')) {
     firebase.firestore().collection('repairs').doc(globalThis.currentRepair.id)
       .set({
         repair_type: repairTypeSchedaDiRiparazioneInput.value,
         specific_place: specificPlaceSchedaDiRiparazioneInput.value,
+        specific_date: specificDateSchedaDiRiparazioneInput.value,
       }, { merge: true })
       .then(() => {
         notificate("Salvataggio effettuato con successo");

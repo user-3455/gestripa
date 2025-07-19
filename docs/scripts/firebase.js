@@ -1,3 +1,4 @@
+// Credenziali di configurazione client Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyCEg7nrbEdgYWYPLzZvMyygAUoGnH82usk",
   authDomain: "app1-723bd.firebaseapp.com",
@@ -8,10 +9,10 @@ const firebaseConfig = {
   measurementId: "G-ES2EW7NQZE"
 };
 
-// Initialize Firebase
+// Inizializza Firebase con le credenziali fornite attraverso la configurazione (firebaseConfig)
 firebase.initializeApp(firebaseConfig);
 
-
+// Imposta la persistenza dell'autenticazione a "LOCAL" in modo da mantenere la sessione quando si chiude la scheda, il browser oppure quando si refresha la pagina
 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(function () {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -31,14 +32,11 @@ firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(functi
       document.getElementById("master_container").style.display = "none";
     }
   });
-})
-  .catch(function (error) {
-    console.log(error);
-  });
+}).catch(function (error) {
+  console.log(error);
+});
 
-
-
-
+// Permette agli utenti di autenticarsi nel gestionale
 function login() {
   var email = document.getElementById("login_email").value;
   var password = document.getElementById("login_password").value;
@@ -65,19 +63,18 @@ function login() {
       }
     });
 }
-
-
+// Permette agli utenti di disconnettersi dal gestionale
 function logout() {
-  if(confirm('Sei sicuro di volerti disconnettere?')){
+  if (confirm('Sei sicuro di volerti disconnettere?')) {
     firebase.auth().signOut()
-    .then(() => {
-      document.getElementById("login").style.display = "flex";
-      document.getElementById("master_container").style.display = "none";
-      alert("Utente disconnesso con successo");
-    })
-    .catch((error) => {
-      console.error("Errore durante la disconnessione:", error);
-      alert("Errore durante la disconnessione:" + error.message);
-    });
+      .then(() => {
+        document.getElementById("login").style.display = "flex";
+        document.getElementById("master_container").style.display = "none";
+        alert("Utente disconnesso con successo");
+      })
+      .catch((error) => {
+        console.error("Errore durante la disconnessione:", error);
+        alert("Errore durante la disconnessione:" + error.message);
+      });
   }
 }

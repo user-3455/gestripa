@@ -1,9 +1,10 @@
+// Ottiene i prodotti di una riparazione
 function getRepairProducts() {
   var table = document.getElementById("pdf_table1");
   const db = firebase.firestore();
 
-  console.log(globalThis.currentRepair.objectID)
-  console.log(globalThis.currentRepair.id)
+  // console.log(globalThis.currentRepair.objectID)
+  // console.log(globalThis.currentRepair.id)
 
   let query = db.collection('repairs').doc(globalThis.currentRepair.id).collection('products');
   let totalPriceSum = 0;
@@ -67,10 +68,9 @@ function getRepairProducts() {
 
 
 }
-
-//TORNA QUI
+// Calcola e mostra nel DOM il prezzo totale di una riparazione
 function displayTotalPrice(totalPrice) {
-  console.log(globalThis.currentRepair.id)
+  // console.log(globalThis.currentRepair.id)
   firebase.firestore().collection('repairs').doc(globalThis.currentRepair.id).get()
     .then((doc) => {
       if (doc) {
@@ -84,7 +84,8 @@ function displayTotalPrice(totalPrice) {
       alert('Impossibile mostrare correttamente i dati nel pdf' + error);
     });
 
-  document.getElementById('total_pdf1').innerText = 'TOTALE RICAMBI: ' + troncaA2Decimali(totalPrice) + ' EURO+IVA';
+  // +IVA
+  document.getElementById('total_pdf1').innerText = 'TOTALE RICAMBI: ' + troncaA2Decimali(totalPrice) + ' EURO';
   document.getElementById('hand_price_pdf1').innerText = 'MANODOPERA: ' + globalThis.currentRepair.manodopera + ' EURO';
   var result1 = parseFloat(globalThis.currentRepair.manodopera) + (parseFloat(totalPrice));
   document.getElementById('total_total_price_pdf1').innerText = 'TOTALE: ' + result1 + ' EURO+IVA';
@@ -99,7 +100,7 @@ function displayTotalPrice(totalPrice) {
 
   globalThis.totalPrice = totalPrice;
 }
-
+// Aggiungi dettagli al pdf rispetto alla riparazione corrente (e aggiungi o aggiornali nel DB)
 function addPdfDetails() {
   const db = firebase.firestore();
   const repairDocRef = db.collection('repairs').doc(globalThis.currentRepair.id);
@@ -122,12 +123,8 @@ function addPdfDetails() {
     });
 
 }
-
-
-
-
+// Cerca tra le tutte le riparazioni attraverso la ricerca full-text 
 async function searchWithAlgolia() {
-  var table = document.getElementById("tutteLeRiparazioniTableBody");
   const searchInput = document.getElementById('repair_search_input');
   const idToken = await firebase.auth().currentUser.getIdToken();  // Ottieni il token
   const url = `https://us-central1-app1-723bd.cloudfunctions.net/searchRepairs?q=${encodeURIComponent(searchInput.value)}`;
@@ -156,7 +153,7 @@ async function searchWithAlgolia() {
       }
       throw new Error('Errore nella richiesta');
     }
-    
+
 
     const results = await response.json();
 
@@ -166,11 +163,11 @@ async function searchWithAlgolia() {
     un tag chiamato objectID che includeva l'id del documento 
     */
     const renamedResults = results.map(obj => ({
-        ...obj,
-        id: obj.objectID,  // Copia objectID in id
+      ...obj,
+      id: obj.objectID,  // Copia objectID in id
     }));
 
-    console.log(renamedResults)
+    // console.log(renamedResults)
 
     // console.log(results);
     createTableRows(renamedResults, 'tutteLeRiparazioniTableBody');

@@ -1,26 +1,21 @@
-// Ultimo documento recuperato dal DB
 let lastVisible = null;
-// Array delle riparazioni recuperate dal DB
 let allRepairs = [];
-// Limite di riparazioni da recuperare per ogni chiamata fetch al DB
 let limit = 10;
 
-// Imposta un limite sul numero di riparazioni da ottenere
-function setGetRepairsQueryLimit() {
+function setGetRepairsQueryLimit(){
     lastVisible = null;
     allRepairs = [];
 
     const repairQueryLimitInput = document.getElementById('repair_query_limit_input');
-    if (repairQueryLimitInput.value != '') {
-        limit = Number(repairQueryLimitInput.value);
-    } else {
-        limit = 10;
+    if(repairQueryLimitInput.value != ''){
+      limit = Number(repairQueryLimitInput.value);
+    }else{
+      limit = 10;
     }
 
     getRepairsDef();
 }
 
-// Ottiene le riparazioni
 function getRepairsDef() {
     const noDataAvailable = document.getElementById('no-data-available');
 
@@ -29,17 +24,17 @@ function getRepairsDef() {
 
 
     let query = firebase
-        .firestore()
-        .collection('repairs')
-        .orderBy('timestamp', fetchOrderSelector.value)
-        .limit(limit);
+    .firestore()
+    .collection('repairs')
+    .orderBy('timestamp', fetchOrderSelector.value)
+    .limit(limit);
 
     // Applica il filtro solo se necessario
     if (globalThis.repairType !== 'TUTTE') {
         query = query.where('repair_type', '==', globalThis.repairType);
     }
 
-    if (statusSelector.value !== 'TUTTI') {
+    if(statusSelector.value !== 'TUTTI'){
         query = query.where('status', '==', statusSelector.value)
     }
 
@@ -54,7 +49,7 @@ function getRepairsDef() {
                 noDataAvailable.style.display = 'flex';
                 var table = document.getElementById('tutteLeRiparazioniTableBody');
                 table.innerHTML = '';
-
+                
                 console.log("Nessun altro dato trovato.");
                 return;
             }
@@ -79,8 +74,8 @@ function getRepairsDef() {
         });
 }
 
-// Resetta i filtri e aggiorna la tabella delle riparazioni
-function refreshFiltersInTable() {
+
+function refreshFiltersInTable(){
     var table = document.getElementById('tutteLeRiparazioniTableBody');
     table.innerHTML = '';
 
@@ -89,7 +84,7 @@ function refreshFiltersInTable() {
     getRepairsDef();
 }
 
-// Crea una righe di tebelle multiple datagli l'array di oggetti recuperati dal db
+
 function createTableRows(dataArray, tableId) {
     var table = document.getElementById(tableId);
     table.innerHTML = '';
@@ -156,7 +151,10 @@ function createTableRows(dataArray, tableId) {
     });
 }
 
-// Crea una sola riga di tebella datagli l'oggetto recuperato dal db
+
+
+
+
 function createTableRow(data, table) {
 
     var row = table.insertRow();
@@ -211,3 +209,4 @@ function createTableRow(data, table) {
     };
     cell15.appendChild(editButton);
 }
+
