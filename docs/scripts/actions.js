@@ -191,9 +191,9 @@ function getRepairDataToFill(data) {
 
 
   const repairSpecificPlaceSelectorContainer = document.getElementById('change_repair_specific_place_container');
-  if(data.repair_type == 'ESTERNA' || data.repair_type == 'GARANZIA'){
+  if (data.repair_type == 'ESTERNA' || data.repair_type == 'GARANZIA') {
     repairSpecificPlaceSelectorContainer.style.display = 'flex';
-  }else{
+  } else {
     repairSpecificPlaceSelectorContainer.style.display = 'none';
   }
 
@@ -320,7 +320,25 @@ function aggiungiDatiAlPdf() {
       return path.update({ id: newDocId });
     })
     .then(() => {
+
+      if (manodopera.value !== '') {
+        globalThis.currentRepair.manodopera = manodopera.value;
+      }
+
+      if (data_avviso.value !== '') {
+        globalThis.currentRepair.data_avviso = data_avviso.value;
+      }
+
+      if (status.value !== '') {
+        globalThis.currentRepair.status = status.value;
+      }
+
+      if (ritiro.value !== '') {
+        globalThis.currentRepair.end = ritiro.value;
+      }
+
       const totalPrice = globalThis.totalPrice;
+
       if (document.getElementById('input5').value !== '') {
         // +IVA
         document.getElementById('total_pdf1').innerText = 'TOTALE RICAMBI: ' + troncaA2Decimali(totalPrice) + ' EURO';
@@ -328,20 +346,22 @@ function aggiungiDatiAlPdf() {
         var result1 = parseFloat(manodopera.value) + (parseFloat(totalPrice));
         document.getElementById('total_total_price_pdf1').innerText = 'TOTALE: ' + result1 + ' EURO+IVA';
       }
+
       if (document.getElementById('input6').value !== '') {
         var parts1 = data_avviso.value.split("-");
         var converted = parts1[2] + "-" + parts1[1] + "-" + parts1[0];
         document.getElementById('data_avviso_pdf1').innerText = 'DATA AVVISO: ' + converted;
       }
+
       if (document.getElementById('input7').value !== '') {
         document.getElementById('in_repair_veichle_status_pdf1').innerText = 'STATO VEICOLO: ' + status.value;
       }
+
       if (document.getElementById('inputRITIRO1').value !== '') {
         var parts2 = ritiro.value.split("-");
         var converted2 = parts2[2] + "-" + parts2[1] + "-" + parts2[0];
         document.getElementById('end_pdf1').innerText = 'DATA RITIRO: ' + converted2;
       }
-
 
     })
     .then(() => {
